@@ -150,11 +150,151 @@ class AppLocalizations {
     );
   }
 
-  /// `password`
+  /// `Password`
   String get password {
     return Intl.message(
-      'password',
+      'Password',
       name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don't have an account? `
+  String get dontHaveAnAccount {
+    return Intl.message(
+      'Don\'t have an account? ',
+      name: 'dontHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Register`
+  String get register {
+    return Intl.message(
+      'Register',
+      name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Success`
+  String get success {
+    return Intl.message(
+      'Success',
+      name: 'success',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failure`
+  String get failure {
+    return Intl.message(
+      'Failure',
+      name: 'failure',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get fullName {
+    return Intl.message(
+      'Full Name',
+      name: 'fullName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Your Name`
+  String get pleaseEnterYourName {
+    return Intl.message(
+      'Please Enter Your Name',
+      name: 'pleaseEnterYourName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name Must Be 3 Characters At Least`
+  String get nameMustBe3CharactersAtLeast {
+    return Intl.message(
+      'Name Must Be 3 Characters At Least',
+      name: 'nameMustBe3CharactersAtLeast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirmPassword {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Already have an account? `
+  String get alreadyHaveAnAccount {
+    return Intl.message(
+      'Already have an account? ',
+      name: 'alreadyHaveAnAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get phoneNumber {
+    return Intl.message(
+      'Phone Number',
+      name: 'phoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Confirm Password`
+  String get pleaseConfirmPassword {
+    return Intl.message(
+      'Please Confirm Password',
+      name: 'pleaseConfirmPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password And Confirm Password Fields Don't Match`
+  String get passwordAndConfirmPasswordFieldsDontMatch {
+    return Intl.message(
+      'Password And Confirm Password Fields Don\'t Match',
+      name: 'passwordAndConfirmPasswordFieldsDontMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Phone Number`
+  String get pleaseEnterPhoneNumber {
+    return Intl.message(
+      'Please Enter Phone Number',
+      name: 'pleaseEnterPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Valid Number`
+  String get pleaseEnterValidNumber {
+    return Intl.message(
+      'Please Enter Valid Number',
+      name: 'pleaseEnterValidNumber',
       desc: '',
       args: [],
     );

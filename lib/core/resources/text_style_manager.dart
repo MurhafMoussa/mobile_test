@@ -67,17 +67,17 @@ TextStyle _getBlackStyle({required Color color, required double fontSize}) =>
     );
 
 TextStyle getSmallTitleTextStyle() => _getRegularStyle(
-      color: ColorManager.darkBlue,
+      color: ColorManager.white,
       fontSize: FontSizesManager.s20,
     );
 
 TextStyle getSubtitleTextStyle() => _getLightStyle(
-      color: ColorManager.darkBlue,
+      color: ColorManager.white,
       fontSize: FontSizesManager.s16,
     );
 
 TextStyle getBodyTextStyle() => _getLightStyle(
-      color: ColorManager.darkBlue,
+      color: ColorManager.primary,
       fontSize: FontSizesManager.s14,
     );
 
@@ -89,4 +89,8 @@ TextStyle getNormalTitleTextStyle() => _getBoldStyle(
 TextStyle getLargeTitleTextStyle() => _getBoldStyle(
       color: ColorManager.primary,
       fontSize: FontSizesManager.s36,
+    );
+TextStyle getErrorTextStyle() => _getLightStyle(
+      color: ColorManager.red,
+      fontSize: FontSizesManager.s12,
     );

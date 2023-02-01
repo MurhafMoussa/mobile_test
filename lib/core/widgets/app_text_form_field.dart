@@ -15,11 +15,11 @@ class AppTextFormField extends StatelessWidget {
   });
   final TextEditingController textEditingController;
   final bool passwordVisibility;
-  final IconButton? suffixIcon;
+  final Widget? suffixIcon;
   final String? Function(String?) validator;
   final TextInputType textInputType;
   final String hintText;
-  final IconButton? prefixIcon;
+  final Widget? prefixIcon;
   final TextInputAction textInputAction;
   @override
   Widget build(BuildContext context) => TextFormField(
@@ -31,6 +31,10 @@ class AppTextFormField extends StatelessWidget {
         textAlignVertical: TextAlignVertical.center,
         textInputAction: textInputAction,
         decoration: InputDecoration(
-            hintText: hintText, prefixIcon: prefixIcon, suffixIcon: suffixIcon,),
-        validator: validator,);
+          hintText: hintText,
+          prefixIcon: prefixIcon,
+          suffixIcon: suffixIcon,
+        ),
+        validator: validator,
+      );
 }

@@ -22,21 +22,45 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "alreadyHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "appTitle": MessageLookupByLibrary.simpleMessage("Things ToDo"),
+        "confirmPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "dontHaveAnAccount":
+            MessageLookupByLibrary.simpleMessage("Don\'t have an account? "),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
         "emailIsNotValid":
             MessageLookupByLibrary.simpleMessage("Email Is Not Valid"),
+        "failure": MessageLookupByLibrary.simpleMessage("Failure"),
+        "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
-        "password": MessageLookupByLibrary.simpleMessage("password"),
+        "nameMustBe3CharactersAtLeast": MessageLookupByLibrary.simpleMessage(
+            "Name Must Be 3 Characters At Least"),
+        "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "passwordAndConfirmPasswordFieldsDontMatch":
+            MessageLookupByLibrary.simpleMessage(
+                "Password And Confirm Password Fields Don\'t Match"),
         "passwordMustBe8CharactersAtLeast":
             MessageLookupByLibrary.simpleMessage(
                 "Password Must Be 8 Characters At Least"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "pleaseConfirmPassword":
+            MessageLookupByLibrary.simpleMessage("Please Confirm Password"),
         "pleaseEnterEmail":
             MessageLookupByLibrary.simpleMessage("Please Enter Email"),
         "pleaseEnterOldPassword":
             MessageLookupByLibrary.simpleMessage("Please Enter Old Password"),
         "pleaseEnterPassword":
             MessageLookupByLibrary.simpleMessage("Please Enter Password"),
+        "pleaseEnterPhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Please Enter Phone Number"),
+        "pleaseEnterValidNumber":
+            MessageLookupByLibrary.simpleMessage("Please Enter Valid Number"),
+        "pleaseEnterYourName":
+            MessageLookupByLibrary.simpleMessage("Please Enter Your Name"),
+        "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "success": MessageLookupByLibrary.simpleMessage("Success"),
         "things": MessageLookupByLibrary.simpleMessage("Things"),
         "tod": MessageLookupByLibrary.simpleMessage("Tod")
       };

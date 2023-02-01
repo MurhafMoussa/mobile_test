@@ -1,26 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:things_todo/core/resources/color_manager.dart';
+import 'package:things_todo/core/resources/font_manager.dart';
 import 'package:things_todo/core/resources/text_style_manager.dart';
 import 'package:things_todo/core/widgets/outline_input_border_based_on_color.dart';
 
 ThemeData getApplicationThemeData({required bool isDark}) => isDark
     ? ThemeData.dark().copyWith()
     : ThemeData.light().copyWith(
-        primaryColor: ColorManager.primary,
-        iconTheme: const IconThemeData(color: ColorManager.white),
+        colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: ColorManager.primary,
+          onPrimary: ColorManager.white,
+          secondary: ColorManager.white,
+          onSecondary: ColorManager.primary,
+          error: ColorManager.red,
+          onError: ColorManager.white,
+          background: ColorManager.scaffoldBackgroundColor,
+          onBackground: ColorManager.white,
+          surface: ColorManager.white,
+          onSurface: ColorManager.primary,
+        ),
         cardTheme:
             const CardTheme(elevation: 0, shadowColor: ColorManager.gray),
         appBarTheme: const AppBarTheme(
           color: ColorManager.primary,
-          iconTheme: IconThemeData(color: ColorManager.white),
           centerTitle: false,
           elevation: 0,
           scrolledUnderElevation: 0,
-          actionsIconTheme: IconThemeData(
-            color: ColorManager.white,
-          ),
         ),
-        scaffoldBackgroundColor: ColorManager.scaffoldBackgroundColor,
         tabBarTheme: TabBarTheme(
           labelStyle: getNormalTitleTextStyle(),
           unselectedLabelStyle: getSmallTitleTextStyle(),
@@ -37,13 +44,11 @@ ThemeData getApplicationThemeData({required bool isDark}) => isDark
         ),
         useMaterial3: true,
         inputDecorationTheme: InputDecorationTheme(
-          errorBorder: CustomOutlineInputBorder(ColorManager.red),
-          focusedBorder: CustomOutlineInputBorder(ColorManager.primary),
-          enabledBorder: CustomOutlineInputBorder(ColorManager.gray),
-          focusedErrorBorder: CustomOutlineInputBorder(ColorManager.red),
-          hintStyle: getBodyTextStyle(),
-          errorStyle: getBodyTextStyle().copyWith(
-            color: ColorManager.red,
-          ),
-        ),
+            errorBorder: customOutlineInputBorder(ColorManager.red),
+            focusedBorder: customOutlineInputBorder(ColorManager.primary),
+            enabledBorder: customOutlineInputBorder(ColorManager.gray),
+            focusedErrorBorder: customOutlineInputBorder(ColorManager.red),
+            hintStyle:
+                getSmallTitleTextStyle().copyWith(color: ColorManager.gray),
+            errorStyle: getErrorTextStyle()),
       );

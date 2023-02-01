@@ -9,5 +9,19 @@
   "emailIsNotValid": "Email Is Not Valid",
   "emailAddress": "Email Address",
   "login": "Login",
-  "password": "password"
+  "password": "Password",
+  "dontHaveAnAccount": "Don't have an account? ",
+  "register": "Register",
+  "success": "Success",
+  "failure": "Failure",
+  "fullName": "Full Name",
+  "pleaseEnterYourName": "Please Enter Your Name",
+  "nameMustBe3CharactersAtLeast": "Name Must Be 3 Characters At Least",
+  "confirmPassword": "Confirm Password",
+  "alreadyHaveAnAccount": "Already have an account? ",
+  "phoneNumber": "Phone Number",
+  "pleaseConfirmPassword": "Please Confirm Password",
+  "passwordAndConfirmPasswordFieldsDontMatch": "Password And Confirm Password Fields Don't Match",
+  "pleaseEnterPhoneNumber": "Please Enter Phone Number",
+  "pleaseEnterValidNumber": "Please Enter Valid Number"
 }
