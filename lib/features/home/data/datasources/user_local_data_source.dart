@@ -6,10 +6,10 @@ import 'package:things_todo/features/home/data/models/user_model/user_model.dart
 abstract class UserLocalDataSource {
   Future<void> saveUser(UserModel userModel);
 }
-@Injectable(as : UserLocalDataSource)
+@Singleton(as : UserLocalDataSource)
 class UserLocalDataSourceImp implements UserLocalDataSource {
-  final SharedPreferences _sharedPrefrence;
   UserLocalDataSourceImp(this._sharedPrefrence);
+  final SharedPreferences _sharedPrefrence;
   @override
   Future<void> saveUser(UserModel userModel) async {
     try {

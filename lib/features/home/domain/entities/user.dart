@@ -1,10 +1,5 @@
 
 class User {
-  final String name;
- 
-  final String email;
-  final String phone;
-  final String countryCode;
   const User({
    required this.name ,
    required this.email ,
@@ -12,9 +7,12 @@ class User {
    required this.countryCode ,
    
   });
+  final String name;
+ 
+  final String email;
+  final String phone;
+  final String countryCode;
 
   @override
-  String toString() {
-    return 'User(name: $name, email: $email, phone: $phone, countryCode: $countryCode)';
-  }
+  String toString() => 'User(name: $name, email: $email, phone: $phone, countryCode: $countryCode)';
 }

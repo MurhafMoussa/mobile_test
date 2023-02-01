@@ -59,10 +59,10 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       case 400:
       case 401:
       case 403:
-        return NetworkExceptions.unauthorizedRequest("${errorModel.message}");
+        return NetworkExceptions.unauthorizedRequest('${errorModel.message}');
 
       case 404:
-        return NetworkExceptions.notFound("${errorModel.message}");
+        return NetworkExceptions.notFound('${errorModel.message}');
       case 405:
         return const NetworkExceptions.methodNotAllowed();
       case 409:
@@ -70,15 +70,15 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       case 408:
         return const NetworkExceptions.requestTimeout();
       case 422:
-        return NetworkExceptions.unprocessableEntity("${errorModel.message}");
+        return NetworkExceptions.unprocessableEntity('${errorModel.message}');
       case 500:
         return const NetworkExceptions.internalServerError();
       case 503:
         return const NetworkExceptions.serviceUnavailable();
       default:
-        var responseCode = statusCode;
+        int responseCode = statusCode;
         return NetworkExceptions.defaultError(
-          "Received invalid status code: $responseCode",
+          'Received invalid status code: $responseCode',
         );
     }
   }
@@ -124,7 +124,7 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
         return const NetworkExceptions.unexpectedError();
       }
     } else {
-      if (error.toString().contains("is not a subtype of")) {
+      if (error.toString().contains('is not a subtype of')) {
         return const NetworkExceptions.unableToProcess();
       } else {
         return const NetworkExceptions.unexpectedError();
@@ -133,28 +133,28 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
   }
 
   static String getErrorMessage(NetworkExceptions networkExceptions) {
-    var errorMessage = "";
+    String errorMessage = '';
     networkExceptions.when(
       notImplemented: () {
-        errorMessage = "Not Implemented";
+        errorMessage = 'Not Implemented';
       },
       requestCancelled: () {
-        errorMessage = "Request Cancelled";
+        errorMessage = 'Request Cancelled';
       },
       internalServerError: () {
-        errorMessage = "Internal Server Error";
+        errorMessage = 'Internal Server Error';
       },
       notFound: (String reason) {
         errorMessage = reason;
       },
       serviceUnavailable: () {
-        errorMessage = "Service unavailable";
+        errorMessage = 'Service unavailable';
       },
       methodNotAllowed: () {
-        errorMessage = "Method Not Allowed";
+        errorMessage = 'Method Not Allowed';
       },
       badRequest: () {
-        errorMessage = "Bad request";
+        errorMessage = 'Bad request';
       },
       unauthorizedRequest: (String error) {
         errorMessage = error;
@@ -163,31 +163,31 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
         errorMessage = error;
       },
       unexpectedError: () {
-        errorMessage = "Unexpected error occurred";
+        errorMessage = 'Unexpected error occurred';
       },
       requestTimeout: () {
-        errorMessage = "Connection request timeout";
+        errorMessage = 'Connection request timeout';
       },
       noInternetConnection: () {
-        errorMessage = "No internet connection";
+        errorMessage = 'No internet connection';
       },
       conflict: () {
-        errorMessage = "Error due to a conflict";
+        errorMessage = 'Error due to a conflict';
       },
       sendTimeout: () {
-        errorMessage = "Send timeout in connection with API server";
+        errorMessage = 'Send timeout in connection with API server';
       },
       unableToProcess: () {
-        errorMessage = "Unable to process the data";
+        errorMessage = 'Unable to process the data';
       },
       defaultError: (String error) {
         errorMessage = error;
       },
       formatException: () {
-        errorMessage = "Unexpected error occurred";
+        errorMessage = 'Unexpected error occurred';
       },
       notAcceptable: () {
-        errorMessage = "Not acceptable";
+        errorMessage = 'Not acceptable';
       },
     );
     return errorMessage;

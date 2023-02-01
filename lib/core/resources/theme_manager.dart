@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:things_todo/core/resources/color_manager.dart';
 import 'package:things_todo/core/resources/text_style_manager.dart';
+import 'package:things_todo/core/widgets/outline_input_border_based_on_color.dart';
 
 ThemeData getApplicationThemeData({required bool isDark}) => isDark
     ? ThemeData.dark().copyWith()
@@ -33,5 +34,16 @@ ThemeData getApplicationThemeData({required bool isDark}) => isDark
         listTileTheme: ListTileThemeData(
           titleTextStyle: getSmallTitleTextStyle(),
           subtitleTextStyle: getSubtitleTextStyle(),
+        ),
+        useMaterial3: true,
+        inputDecorationTheme: InputDecorationTheme(
+          errorBorder: CustomOutlineInputBorder(ColorManager.red),
+          focusedBorder: CustomOutlineInputBorder(ColorManager.primary),
+          enabledBorder: CustomOutlineInputBorder(ColorManager.gray),
+          focusedErrorBorder: CustomOutlineInputBorder(ColorManager.red),
+          hintStyle: getBodyTextStyle(),
+          errorStyle: getBodyTextStyle().copyWith(
+            color: ColorManager.red,
+          ),
         ),
       );

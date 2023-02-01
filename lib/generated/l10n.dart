@@ -79,6 +79,86 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Password Must Be 8 Characters At Least`
+  String get passwordMustBe8CharactersAtLeast {
+    return Intl.message(
+      'Password Must Be 8 Characters At Least',
+      name: 'passwordMustBe8CharactersAtLeast',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Old Password`
+  String get pleaseEnterOldPassword {
+    return Intl.message(
+      'Please Enter Old Password',
+      name: 'pleaseEnterOldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Password`
+  String get pleaseEnterPassword {
+    return Intl.message(
+      'Please Enter Password',
+      name: 'pleaseEnterPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Email`
+  String get pleaseEnterEmail {
+    return Intl.message(
+      'Please Enter Email',
+      name: 'pleaseEnterEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Is Not Valid`
+  String get emailIsNotValid {
+    return Intl.message(
+      'Email Is Not Valid',
+      name: 'emailIsNotValid',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email Address`
+  String get emailAddress {
+    return Intl.message(
+      'Email Address',
+      name: 'emailAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login`
+  String get login {
+    return Intl.message(
+      'Login',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `password`
+  String get password {
+    return Intl.message(
+      'password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

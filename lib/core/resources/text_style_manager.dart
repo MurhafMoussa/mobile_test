@@ -87,6 +87,6 @@ TextStyle getNormalTitleTextStyle() => _getBoldStyle(
     );
 
 TextStyle getLargeTitleTextStyle() => _getBoldStyle(
-      color: ColorManager.darkBlue,
+      color: ColorManager.primary,
       fontSize: FontSizesManager.s36,
     );

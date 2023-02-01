@@ -5,10 +5,10 @@ class EndPoints {
   static const String user = '${api}user/';
   
   //user
-  static const String register = "${user}register";
-  static const String login = "${api}login";
-  static const String changePassword = "${user}changepassword";
-  static const String updateUser = "${user}update";
+  static const String register = '${user}register';
+  static const String login = '${api}login';
+  static const String changePassword = '${user}changepassword';
+  static const String updateUser = '${user}update';
   
-  static const String deleteAccount = "${user}delete";
+  static const String deleteAccount = '${user}delete';
 }

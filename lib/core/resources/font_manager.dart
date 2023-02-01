@@ -3,7 +3,7 @@ import 'dart:ui';
 class FontFamily {
   FontFamily._();
   // ignore: prefer_single_quotes
-  static const String fontFamily = "Roboto";
+  static const String fontFamily = "Alexandria";
 }
 
 class FontWeightManager {

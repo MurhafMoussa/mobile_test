@@ -10,7 +10,7 @@ abstract class ApiConsumer {
   Future<dynamic> post(String path,
       {Map<String, dynamic>? body,
       FormData? formData,
-      Map<String, dynamic>? queryParameters});
+      Map<String, dynamic>? queryParameters,});
   Future<dynamic> put(
     String path, {
     Map<String, dynamic>? body,

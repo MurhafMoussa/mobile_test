@@ -1,5 +1,13 @@
 {
   "appTitle": "Things ToDo",
   "things": "Things",
-  "tod": "Tod"
+  "tod": "Tod",
+  "passwordMustBe8CharactersAtLeast": "Password Must Be 8 Characters At Least",
+  "pleaseEnterOldPassword": "Please Enter Old Password",
+  "pleaseEnterPassword": "Please Enter Password",
+  "pleaseEnterEmail": "Please Enter Email",
+  "emailIsNotValid": "Email Is Not Valid",
+  "emailAddress": "Email Address",
+  "login": "Login",
+  "password": "password"
 }

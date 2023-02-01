@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 
 class ColorManager {
   ColorManager._();
-  static const Color primary = Color(0xff7646FF);
-  static const Color secondary = Color(0xff6035D0);
+  static const Color primary = Color(0xff3d0548);
   static const Color white = Color(0xffffffff);
   static const Color lightGreen = Color(0xff4CD964);
   static const Color red = Color(0xffF54439);
@@ -14,10 +13,4 @@ class ColorManager {
   static const Color darkBlue = Color(0xff172735);
   static const Color gray = Color(0xff707070);
   static const Color scaffoldBackgroundColor = Color(0xffEFEFEF);
-  static final List<Color> taskPriorities = <Color>[
-    pink,
-    orange,
-    blueAccent,
-    lightGreen,
-  ];
 }
