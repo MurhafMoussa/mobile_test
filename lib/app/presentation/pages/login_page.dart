@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:things_todo/app/domain/bodies/login_body.dart';
+import 'package:things_todo/app/presentation/controllers/login_controller.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/app_validation_functions.dart';
-import 'package:things_todo/core/resources/color_manager.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
 import 'package:things_todo/core/resources/text_style_manager.dart';
-import 'package:things_todo/core/widgets/app_filled_button.dart';
+import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
 import 'package:things_todo/core/widgets/clickable_text.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/core/widgets/loading_widget.dart';
 import 'package:things_todo/core/widgets/password_icon.dart';
-import 'package:things_todo/app/domain/usecases/post_login_usecase.dart';
-import 'package:things_todo/app/presentation/controllers/login_controller.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -85,14 +82,12 @@ class LoginPage extends GetView<LoginController> {
                         bottom: paddingBetweenTextFieldsValue,
                       ),
                       Obx(
-                        () => AppFilledButton(
+                        () => AppButton.filled(
                           onPressed: _login,
                           content: controller.isLoading.value
                               ? const LoadingWidget()
                               : Text(
                                   AppLocalizations.of(context).login,
-                                  style: getSmallTitleTextStyle()
-                                      .copyWith(color: ColorManager.white),
                                 ),
                         ).paddingSymmetric(vertical: 10),
                       ),

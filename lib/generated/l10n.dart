@@ -299,6 +299,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Welcome to the app`
+  String get welcomeToTheApp {
+    return Intl.message(
+      'Welcome to the app',
+      name: 'welcomeToTheApp',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `HomePage`
+  String get homepage {
+    return Intl.message(
+      'HomePage',
+      name: 'homepage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

@@ -23,5 +23,7 @@
   "pleaseConfirmPassword": "Please Confirm Password",
   "passwordAndConfirmPasswordFieldsDontMatch": "Password And Confirm Password Fields Don't Match",
   "pleaseEnterPhoneNumber": "Please Enter Phone Number",
-  "pleaseEnterValidNumber": "Please Enter Valid Number"
+  "pleaseEnterValidNumber": "Please Enter Valid Number",
+  "welcomeToTheApp": "Welcome to the app",
+  "homepage": "HomePage"
 }

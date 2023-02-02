@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class AppValidation {
@@ -15,7 +14,7 @@ class AppValidation {
   // }
 
   static String? validateConfirmPassword(
-      String? passwordConfirmation, String? newPassword, BuildContext context) {
+      String? passwordConfirmation, String? newPassword, BuildContext context,) {
     if (passwordConfirmation == null || passwordConfirmation.isEmpty) {
       return AppLocalizations.of(context).pleaseConfirmPassword;
     } else if (passwordConfirmation != newPassword) {
@@ -39,7 +38,7 @@ class AppValidation {
   static String? validatePhoneNumber(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
       return AppLocalizations.of(context).pleaseEnterPhoneNumber;
-    } else if (!value.isInt) {
+    } else if (!value.isNumericOnly) {
       return AppLocalizations.of(context).pleaseEnterValidNumber;
     } else {
       return null;

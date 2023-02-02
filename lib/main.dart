@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:things_todo/app/presentation/bindings/home_binding.dart';
+import 'package:things_todo/app/presentation/bindings/login_binding.dart';
 import 'package:things_todo/app/presentation/bindings/register_binding.dart';
+import 'package:things_todo/app/presentation/bindings/welcome_binding.dart';
+import 'package:things_todo/app/presentation/pages/home_page.dart';
+import 'package:things_todo/app/presentation/pages/login_page.dart';
 import 'package:things_todo/app/presentation/pages/register_page.dart';
+import 'package:things_todo/app/presentation/pages/welcome_page.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/strings_manager.dart';
 import 'package:things_todo/core/resources/theme_manager.dart';
-import 'package:things_todo/app/presentation/bindings/login_binding.dart';
-import 'package:things_todo/app/presentation/pages/login_page.dart';
 import 'package:things_todo/generated/l10n.dart';
 import 'package:things_todo/injection.dart';
 
@@ -52,7 +56,7 @@ class MobileTest extends StatelessWidget {
         ),
         theme: getApplicationThemeData(isDark: false),
         navigatorKey: MobileTest.navigatorKey,
-        initialRoute: AppRoutes.loginRoute,
+        initialRoute: AppRoutes.homeRoute,
         getPages: [
           GetPage(
             name: AppRoutes.loginRoute,
@@ -61,8 +65,17 @@ class MobileTest extends StatelessWidget {
           ),
           GetPage(
             name: AppRoutes.registerRoute,
-            page: () => RegisterPage(),
+            page: () => const RegisterPage(),
             binding: RegisterBinding(),
+          ),
+          GetPage(
+            name: AppRoutes.welcomeRoute,
+            page: () => const WelcomePage(),
+            binding: WelcomeBinding(),
+          ), GetPage(
+            name: AppRoutes.homeRoute,
+            page: () => const HomePage(),
+            binding: HomeBinding(),
           ),
         ],
       );

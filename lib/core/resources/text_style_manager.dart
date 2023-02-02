@@ -67,7 +67,7 @@ TextStyle _getBlackStyle({required Color color, required double fontSize}) =>
     );
 
 TextStyle getSmallTitleTextStyle() => _getRegularStyle(
-      color: ColorManager.white,
+      color: ColorManager.primary,
       fontSize: FontSizesManager.s20,
     );
 
@@ -88,7 +88,7 @@ TextStyle getNormalTitleTextStyle() => _getBoldStyle(
 
 TextStyle getLargeTitleTextStyle() => _getBoldStyle(
       color: ColorManager.primary,
-      fontSize: FontSizesManager.s36,
+      fontSize: FontSizesManager.s26,
     );
 TextStyle getErrorTextStyle() => _getLightStyle(
       color: ColorManager.red,

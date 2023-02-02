@@ -10,7 +10,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:internet_connection_checker/internet_connection_checker.dart'
     as _i4;
-import 'package:nb_utils/nb_utils.dart' as _i7;
+import 'package:shared_preferences/shared_preferences.dart' as _i7;
 import 'package:things_todo/app/data/datasources/user_local_data_source.dart'
     as _i8;
 import 'package:things_todo/app/data/datasources/user_remote_data_source.dart'

@@ -1,12 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:things_todo/app/data/models/user_model/user_model.dart';
 import 'package:things_todo/app/domain/bodies/login_body.dart';
 import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/core/api/api_consumer.dart';
 import 'package:things_todo/core/api/end_points.dart';
 import 'package:things_todo/core/api_global_responses/api_success_response.dart';
-import 'package:things_todo/app/data/models/user_model/user_model.dart';
-import 'package:things_todo/app/domain/usecases/post_login_usecase.dart';
 
 abstract class UserRemoteDataSource {
   Future<ApiSuccessResponse<UserModel>> login(LoginBody body);

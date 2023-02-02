@@ -34,6 +34,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Email Is Not Valid"),
         "failure": MessageLookupByLibrary.simpleMessage("Failure"),
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "homepage": MessageLookupByLibrary.simpleMessage("HomePage"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "nameMustBe3CharactersAtLeast": MessageLookupByLibrary.simpleMessage(
             "Name Must Be 3 Characters At Least"),
@@ -62,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "things": MessageLookupByLibrary.simpleMessage("Things"),
-        "tod": MessageLookupByLibrary.simpleMessage("Tod")
+        "tod": MessageLookupByLibrary.simpleMessage("Tod"),
+        "welcomeToTheApp":
+            MessageLookupByLibrary.simpleMessage("Welcome to the app")
       };
 }

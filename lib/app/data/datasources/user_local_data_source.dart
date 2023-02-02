@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:nb_utils/nb_utils.dart';
-import 'package:things_todo/core/local_storage/shared_prefrences_keys.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:things_todo/app/data/models/user_model/user_model.dart';
+import 'package:things_todo/core/local_storage/shared_prefrences_keys.dart';
 
 abstract class UserLocalDataSource {
   Future<void> saveUser(UserModel userModel);
