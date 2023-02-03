@@ -63,7 +63,18 @@ class HomePage extends GetView<HomeController> {
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).logout,
-              onTap: () {},
+              onTap: () async {
+                await showWarningDialog(
+                  context: context,
+                  action: () {
+                    Get.back();
+                    controller.logout();
+                    showAppLoadingDialog(context);
+                  },
+                  content: AppLocalizations.of(context)
+                      .areYouSureThatYouWantToLogout,
+                );
+              },
             ),
           ],
         ),

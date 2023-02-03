@@ -40,5 +40,7 @@
   "loginFirst": "Login First",
   "warning": "Warning !",
   "areYouSureThatYouWantToDeleteYourAccount": "Are you sure that you want to delete your account ?",
-  "yes": "Yes"
+  "yes": "Yes",
+  "youHaveLoggedOutSuccessfuly": "You have logged out successfuly",
+  "areYouSureThatYouWantToLogout": "Are you sure that you want to logout ?"
 }

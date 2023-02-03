@@ -12,6 +12,8 @@ import 'package:things_todo/app/domain/repositories/user_repository.dart';
 import 'package:things_todo/core/api_global_responses/api_success_response.dart';
 import 'package:things_todo/core/errors/network_exceptions.dart';
 import 'package:things_todo/core/network/netwok_info.dart';
+import 'package:things_todo/generated/l10n.dart';
+import 'package:things_todo/main.dart';
 
 @Singleton(as: UserRepository)
 class UserRepositoryImp implements UserRepository {
@@ -54,7 +56,11 @@ class UserRepositoryImp implements UserRepository {
       // so basicly when the token is expired we logout the user and remove
       // his info from local storage
       await _userLocalDataSource.removeUser();
-      return const Left(NetworkExceptions.unauthorizedRequest('Login First'));
+      return Left(
+        NetworkExceptions.unauthorizedRequest(
+          getLoginMessage(),
+        ),
+      );
     }
   }
 
@@ -69,9 +75,38 @@ class UserRepositoryImp implements UserRepository {
     } else {
       //the same as update user
       await _userLocalDataSource.removeUser();
-      return const Left(NetworkExceptions.unauthorizedRequest('Login First'));
+      return Left(
+        NetworkExceptions.unauthorizedRequest(
+          getLoginMessage(),
+        ),
+      );
     }
   }
+
+  String getLoginMessage() =>
+      AppLocalizations.of(MobileTest.navigatorKey.currentState!.context)
+          .loginFirst;
+
+  @override
+  Future<Either<NetworkExceptions, String>> logout() async {
+    if (await userIsAuthinticatedAndHasAuthorization()) {
+      await _userLocalDataSource.removeUser();
+      return getLogoutMessage();
+    } else {
+      //the same as update user
+      await _userLocalDataSource.removeUser();
+      return Left(
+        NetworkExceptions.unauthorizedRequest(
+          getLoginMessage(),
+        ),
+      );
+    }
+  }
+
+  Right<NetworkExceptions, String> getLogoutMessage() => Right(
+        AppLocalizations.of(MobileTest.navigatorKey.currentState!.context)
+            .youHaveLoggedOutSuccessfuly,
+      );
 
   DateTime _parseTokenExpiryDateStringToDateTime(
     UserModel? user,
@@ -101,7 +136,11 @@ class UserRepositoryImp implements UserRepository {
     } else {
       // the same action as the updatePassword
       await _userLocalDataSource.removeUser();
-      return const Left(NetworkExceptions.unauthorizedRequest('Login First'));
+      return Left(
+        NetworkExceptions.unauthorizedRequest(
+          getLoginMessage(),
+        ),
+      );
     }
   }
 

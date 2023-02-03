@@ -469,6 +469,26 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `You have logged out successfuly`
+  String get youHaveLoggedOutSuccessfuly {
+    return Intl.message(
+      'You have logged out successfuly',
+      name: 'youHaveLoggedOutSuccessfuly',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure that you want to logout ?`
+  String get areYouSureThatYouWantToLogout {
+    return Intl.message(
+      'Are you sure that you want to logout ?',
+      name: 'areYouSureThatYouWantToLogout',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

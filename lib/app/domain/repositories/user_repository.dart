@@ -20,4 +20,5 @@ abstract class UserRepository {
     ChangePasswordBody changePasswordBody,
   );
   Future<Either<NetworkExceptions, String>> deleteUser();
+  Future<Either<NetworkExceptions, String>> logout();
 }

@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "areYouSureThatYouWantToDeleteYourAccount":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure that you want to delete your account ?"),
+        "areYouSureThatYouWantToLogout": MessageLookupByLibrary.simpleMessage(
+            "Are you sure that you want to logout ?"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "confirmNewPassword":
@@ -89,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "warning": MessageLookupByLibrary.simpleMessage("Warning !"),
         "welcomeToTheApp":
             MessageLookupByLibrary.simpleMessage("Welcome to the app"),
-        "yes": MessageLookupByLibrary.simpleMessage("Yes")
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "youHaveLoggedOutSuccessfuly": MessageLookupByLibrary.simpleMessage(
+            "You have logged out successfuly")
       };
 }
