@@ -3,17 +3,18 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:things_todo/app/domain/bodies/login_body.dart';
 import 'package:things_todo/app/presentation/controllers/login_controller.dart';
+import 'package:things_todo/app/presentation/widgets/clickable_text.dart';
+import 'package:things_todo/app/presentation/widgets/email_form_field.dart';
+import 'package:things_todo/app/presentation/widgets/password_icon.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/app_validation_functions.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
-import 'package:things_todo/core/resources/text_style_manager.dart';
+import 'package:things_todo/core/resources/custom_page_title.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
-import 'package:things_todo/core/widgets/clickable_text.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/core/widgets/loading_widget.dart';
-import 'package:things_todo/core/widgets/password_icon.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -44,20 +45,11 @@ class LoginPage extends GetView<LoginController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        AppLocalizations.of(context).login,
-                        style: getLargeTitleTextStyle(),
+                      CustomPageTitle(
+                        text: AppLocalizations.of(context).login,
                       ).paddingSymmetric(vertical: 25),
-                      AppTextFormField(
-                        hintText: AppLocalizations.of(context).emailAddress,
-                        textEditingController: controller.emailController,
-                        textInputType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        validator: (String? email) =>
-                            AppValidation.validateEmail(
-                          email,
-                          context,
-                        ),
+                      EmailFormField(
+                        emailController: controller.emailController,
                       ).paddingOnly(
                         bottom: paddingBetweenTextFieldsValue,
                       ),

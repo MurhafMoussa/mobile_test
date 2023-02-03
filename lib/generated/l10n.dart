@@ -319,6 +319,126 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Update Information`
+  String get updateInformation {
+    return Intl.message(
+      'Update Information',
+      name: 'updateInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Password`
+  String get changePassword {
+    return Intl.message(
+      'Change Password',
+      name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Logout`
+  String get logout {
+    return Intl.message(
+      'Logout',
+      name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Old Password`
+  String get oldPassword {
+    return Intl.message(
+      'Old Password',
+      name: 'oldPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password`
+  String get newPassword {
+    return Intl.message(
+      'New Password',
+      name: 'newPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter New Password`
+  String get pleaseEnterNewPassword {
+    return Intl.message(
+      'Please Enter New Password',
+      name: 'pleaseEnterNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Confirm New Password`
+  String get pleaseConfirmNewPassword {
+    return Intl.message(
+      'Please Confirm New Password',
+      name: 'pleaseConfirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Password and New Password Confirmation Fields Don't Match`
+  String get newPasswordAndNewPasswordConfirmationFieldsDontMatch {
+    return Intl.message(
+      'New Password and New Password Confirmation Fields Don\'t Match',
+      name: 'newPasswordAndNewPasswordConfirmationFieldsDontMatch',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm New Password`
+  String get confirmNewPassword {
+    return Intl.message(
+      'Confirm New Password',
+      name: 'confirmNewPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Login First`
+  String get loginFirst {
+    return Intl.message(
+      'Login First',
+      name: 'loginFirst',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

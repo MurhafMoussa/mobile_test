@@ -9,7 +9,7 @@ import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/display_data_widgets.dart';
 import 'package:things_todo/main.dart';
 
-class RegisterController extends GetxController with StateMixin<String> {
+class RegisterController extends GetxController  {
   RegisterController(this._postRegisterUseCase);
   final PostRegisterUseCase _postRegisterUseCase;
   final TextEditingController emailController = TextEditingController();
@@ -19,7 +19,7 @@ class RegisterController extends GetxController with StateMixin<String> {
   final TextEditingController countryCodeController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController nameController = TextEditingController();
-  CountryCode? countryCode;
+
 
   final RxBool passwordVisibility = true.obs;
   final RxBool passwordConfirmationVisibility = true.obs;

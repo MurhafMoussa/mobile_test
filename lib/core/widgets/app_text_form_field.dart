@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:things_todo/core/resources/text_style_manager.dart';
 
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
@@ -26,7 +25,6 @@ class AppTextFormField extends StatelessWidget {
         controller: textEditingController,
         obscureText: passwordVisibility,
         autovalidateMode: AutovalidateMode.onUserInteraction,
-        style: getBodyTextStyle(),
         textAlign: TextAlign.center,
         textAlignVertical: TextAlignVertical.center,
         textInputAction: textInputAction,

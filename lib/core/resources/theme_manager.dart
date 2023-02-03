@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:things_todo/core/resources/color_manager.dart';
 import 'package:things_todo/core/resources/font_manager.dart';
-import 'package:things_todo/core/resources/text_style_manager.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/core/widgets/outline_input_border_based_on_color.dart';
 
@@ -18,43 +19,61 @@ ThemeData getApplicationThemeData({required bool isDark}) => isDark
           onError: ColorManager.white,
           background: ColorManager.scaffoldBackgroundColor,
           onBackground: ColorManager.white,
-          surface: ColorManager.white,
           onSurface: ColorManager.primary,
+          surface: ColorManager.white,
         ),
-        cardTheme:
-            const CardTheme(elevation: 0, shadowColor: ColorManager.gray),
-        appBarTheme: const AppBarTheme(
-          color: ColorManager.primary,
-          centerTitle: false,
-          elevation: 0,
-          scrolledUnderElevation: 0,
-        ),
-        textTheme: TextTheme(
-          labelLarge: getNormalTitleTextStyle(),
-        ),
-        tabBarTheme: TabBarTheme(
-          labelStyle: getNormalTitleTextStyle(),
-          unselectedLabelStyle: getSmallTitleTextStyle(),
-          indicator: const BoxDecoration(
-            color: ColorManager.primary,
-            border: Border(
-              bottom: BorderSide(color: ColorManager.white, width: 5),
-            ),
+        cardTheme: const CardTheme(
+          elevation: 0.5,
+          shadowColor: ColorManager.gray,
+          shape: RoundedRectangleBorder(
+            borderRadius: appSmallBorderRaduis,
           ),
         ),
-        listTileTheme: ListTileThemeData(
-          titleTextStyle: getSmallTitleTextStyle(),
-          subtitleTextStyle: getSubtitleTextStyle(),
+        appBarTheme: AppBarTheme(
+          color: ColorManager.primary,
+          centerTitle: true,
+          elevation: 0,
+          scrolledUnderElevation: 0,
+          titleTextStyle: GoogleFonts.alexandria(
+            fontSize: FontSizesManager.s20,
+          ),
+          iconTheme: const IconThemeData(
+            color: ColorManager.white,
+             
+          ),
+        ),
+        textTheme: GoogleFonts.alexandriaTextTheme().copyWith(
+          // text style for buttons ex : textbutton , outlined ..
+          labelLarge: GoogleFonts.alexandria(
+            fontSize: FontSizesManager.s20,
+          ),
+          //for text inputs and list tile title
+          bodyLarge: GoogleFonts.alexandria(
+            fontSize: FontSizesManager.s20,
+            color: ColorManager.primary,
+          ),
+          //the normal text in the scaffold body and list tile subtitle
+          bodyMedium: GoogleFonts.alexandria(
+            color: ColorManager.primary,
+          ),
+          // for error text and small text in the scaffold body
+          bodySmall: GoogleFonts.alexandria(
+            fontSize: FontSizesManager.s10,
+          ),
+
+          //for hint text
+          titleMedium: GoogleFonts.alexandria(
+            color: ColorManager.gray,
+          ),
         ),
         useMaterial3: true,
         inputDecorationTheme: InputDecorationTheme(
-            errorBorder: customOutlineInputBorder(ColorManager.red),
-            focusedBorder: customOutlineInputBorder(ColorManager.primary),
-            enabledBorder: customOutlineInputBorder(ColorManager.gray),
-            focusedErrorBorder: customOutlineInputBorder(ColorManager.red),
-            hintStyle:
-                getSmallTitleTextStyle().copyWith(color: ColorManager.gray),
-            errorStyle: getErrorTextStyle()),
+          errorBorder: customOutlineInputBorder(ColorManager.red),
+          focusedBorder: customOutlineInputBorder(ColorManager.primary),
+          enabledBorder: customOutlineInputBorder(ColorManager.gray),
+          focusedErrorBorder: customOutlineInputBorder(ColorManager.red),
+          prefixIconColor: ColorManager.primary,
+        ),
         outlinedButtonTheme: const OutlinedButtonThemeData(
           style: ButtonStyle(
             side: MaterialStatePropertyAll(
@@ -69,13 +88,13 @@ ThemeData getApplicationThemeData({required bool isDark}) => isDark
             ),
           ),
         ),
-        filledButtonTheme:const FilledButtonThemeData(
+        filledButtonTheme: const FilledButtonThemeData(
           style: ButtonStyle(
-              shape: MaterialStatePropertyAll(
-                RoundedRectangleBorder(
-                  borderRadius: appLargeBorderRaduis,
-                ),
+            shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: appLargeBorderRaduis,
               ),
-             ),
+            ),
+          ),
         ),
       );

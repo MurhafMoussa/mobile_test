@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:things_todo/core/resources/color_manager.dart';
-import 'package:things_todo/core/resources/text_style_manager.dart';
+import 'package:things_todo/core/resources/font_manager.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/generated/l10n.dart';
 
@@ -36,13 +38,14 @@ SnackBar _customSnackBar(
         children: [
           Text(
             title,
-            style: getSubtitleTextStyle().copyWith(
-              color: Colors.white,
-              fontWeight: FontWeight.w600,
-            ),
           ),
           Text(
             msg,
+            style: GoogleFonts.alexandria(
+              color: ColorManager.white,
+              fontWeight: FontWeight.w200,
+              fontSize: FontSizesManager.s10,
+            ),
           ),
         ],
       ),

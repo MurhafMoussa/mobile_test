@@ -4,18 +4,22 @@ import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/app/presentation/controllers/register_controller.dart';
+import 'package:things_todo/app/presentation/widgets/email_form_field.dart';
+import 'package:things_todo/app/presentation/widgets/full_name_form_field.dart';
+import 'package:things_todo/app/presentation/widgets/password_icon.dart';
+import 'package:things_todo/app/presentation/widgets/phone_form_field.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/app_validation_functions.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
-import 'package:things_todo/core/resources/text_style_manager.dart';
+import 'package:things_todo/core/resources/custom_page_title.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
-import 'package:things_todo/core/widgets/clickable_text.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/core/widgets/loading_widget.dart';
-import 'package:things_todo/core/widgets/password_icon.dart';
 import 'package:things_todo/generated/l10n.dart';
+
+import '../widgets/clickable_text.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   const RegisterPage({super.key});
@@ -45,32 +49,20 @@ class RegisterPage extends GetView<RegisterController> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        AppLocalizations.of(context).register,
-                        style: getLargeTitleTextStyle(),
+                      CustomPageTitle(
+                        text: AppLocalizations.of(context).register,
                       ).paddingSymmetric(vertical: 25),
-                      AppTextFormField(
-                        hintText: AppLocalizations.of(context).fullName,
-                        textEditingController: controller.nameController,
-                        textInputAction: TextInputAction.next,
-                        validator: (String? name) => AppValidation.validateName(
-                          name,
-                          context,
-                        ),
+                      FullNameFormField(
+                        nameController: controller.nameController,
                       ).paddingOnly(
                         bottom: paddingBetweenTextFieldsValue,
                       ),
-                      phoneFormField(),
-                      AppTextFormField(
-                        hintText: AppLocalizations.of(context).emailAddress,
-                        textEditingController: controller.emailController,
-                        textInputType: TextInputType.emailAddress,
-                        textInputAction: TextInputAction.next,
-                        validator: (String? email) =>
-                            AppValidation.validateEmail(
-                          email,
-                          context,
-                        ),
+                      PhoneFormField(
+                        countryCodeController: controller.countryCodeController,
+                        phoneController: controller.phoneController,
+                      ),
+                      EmailFormField(
+                        emailController: controller.emailController,
                       ).paddingOnly(
                         bottom: paddingBetweenTextFieldsValue,
                       ),
@@ -110,7 +102,7 @@ class RegisterPage extends GetView<RegisterController> {
                                 controller.passwordConfirmationVisibility.value,
                           ),
                           validator: (String? password) =>
-                              AppValidation.validateConfirmPassword(
+                              AppValidation.validatePasswordConfirmation(
                             password,
                             controller.passwordController.text,
                             context,
@@ -126,7 +118,6 @@ class RegisterPage extends GetView<RegisterController> {
                               ? const LoadingWidget()
                               : Text(
                                   AppLocalizations.of(context).register,
-                              
                                 ),
                         ).paddingSymmetric(vertical: 10),
                       ),
@@ -144,40 +135,6 @@ class RegisterPage extends GetView<RegisterController> {
               ),
             ),
           ],
-        ),
-      );
-
-  StatefulBuilder phoneFormField() => StatefulBuilder(
-        builder: (context, setState) => AppTextFormField(
-          hintText: AppLocalizations.of(context).phoneNumber,
-          textEditingController: controller.phoneController,
-          textInputType: TextInputType.number,
-          textInputAction: TextInputAction.next,
-          prefixIcon: GestureDetector(
-            onTap: () async {
-              controller.countryCode = await const FlCountryCodePicker()
-                  .showPicker(context: context);
-              if (controller.countryCode != null) {
-                controller.countryCodeController.text =
-                    controller.countryCode!.dialCode;
-                setState(
-                  () {},
-                );
-              }
-            },
-            child: SizedBox(
-              child: controller.countryCode != null
-                  ? controller.countryCode!.flagImage
-                      .paddingSymmetric(horizontal: 10)
-                  : const Icon(Icons.flag),
-            ),
-          ),
-          validator: (String? name) => AppValidation.validatePhoneNumber(
-            name,
-            context,
-          ),
-        ).paddingOnly(
-          bottom: paddingBetweenTextFieldsValue,
         ),
       );
 

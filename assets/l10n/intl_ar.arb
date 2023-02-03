@@ -25,5 +25,17 @@
   "pleaseEnterPhoneNumber": "Please Enter Phone Number",
   "pleaseEnterValidNumber": "Please Enter Valid Number",
   "welcomeToTheApp": "Welcome to the app",
-  "homepage": "HomePage"
+  "homepage": "HomePage",
+  "updateInformation": "Update Information",
+  "changePassword": "Change Password",
+  "deleteAccount": "Delete Account",
+  "logout": "Logout",
+  "oldPassword": "Old Password",
+  "newPassword": "New Password",
+  "save": "Save",
+  "pleaseEnterNewPassword": "Please Enter New Password",
+  "pleaseConfirmNewPassword": "Please Confirm New Password",
+  "newPasswordAndNewPasswordConfirmationFieldsDontMatch": "New Password and New Password Confirmation Fields Don't Match",
+  "confirmNewPassword": "Confirm New Password",
+  "loginFirst": "Login First"
 }

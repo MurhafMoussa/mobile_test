@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:things_todo/app/presentation/bindings/change_password_binding.dart';
 import 'package:things_todo/app/presentation/bindings/home_binding.dart';
 import 'package:things_todo/app/presentation/bindings/login_binding.dart';
 import 'package:things_todo/app/presentation/bindings/register_binding.dart';
 import 'package:things_todo/app/presentation/bindings/welcome_binding.dart';
+import 'package:things_todo/app/presentation/pages/change_password_page.dart';
 import 'package:things_todo/app/presentation/pages/home_page.dart';
 import 'package:things_todo/app/presentation/pages/login_page.dart';
 import 'package:things_todo/app/presentation/pages/register_page.dart';
@@ -56,7 +58,7 @@ class MobileTest extends StatelessWidget {
         ),
         theme: getApplicationThemeData(isDark: false),
         navigatorKey: MobileTest.navigatorKey,
-        initialRoute: AppRoutes.homeRoute,
+        initialRoute: AppRoutes.welcomeRoute,
         getPages: [
           GetPage(
             name: AppRoutes.loginRoute,
@@ -72,10 +74,16 @@ class MobileTest extends StatelessWidget {
             name: AppRoutes.welcomeRoute,
             page: () => const WelcomePage(),
             binding: WelcomeBinding(),
-          ), GetPage(
+          ),
+          GetPage(
             name: AppRoutes.homeRoute,
             page: () => const HomePage(),
             binding: HomeBinding(),
+          ), 
+          GetPage(
+            name: AppRoutes.changePasswordRoute,
+            page: () => const ChangePasswordPage(),
+            binding: ChangePasswordBinding(),
           ),
         ],
       );

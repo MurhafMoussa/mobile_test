@@ -25,8 +25,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "appTitle": MessageLookupByLibrary.simpleMessage("Things ToDo"),
+        "changePassword":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "confirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Confirm New Password"),
         "confirmPassword":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
         "dontHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Don\'t have an account? "),
         "emailAddress": MessageLookupByLibrary.simpleMessage("Email Address"),
@@ -36,8 +41,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "fullName": MessageLookupByLibrary.simpleMessage("Full Name"),
         "homepage": MessageLookupByLibrary.simpleMessage("HomePage"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
+        "loginFirst": MessageLookupByLibrary.simpleMessage("Login First"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "nameMustBe3CharactersAtLeast": MessageLookupByLibrary.simpleMessage(
             "Name Must Be 3 Characters At Least"),
+        "newPassword": MessageLookupByLibrary.simpleMessage("New Password"),
+        "newPasswordAndNewPasswordConfirmationFieldsDontMatch":
+            MessageLookupByLibrary.simpleMessage(
+                "New Password and New Password Confirmation Fields Don\'t Match"),
+        "oldPassword": MessageLookupByLibrary.simpleMessage("Old Password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "passwordAndConfirmPasswordFieldsDontMatch":
             MessageLookupByLibrary.simpleMessage(
@@ -46,10 +58,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Password Must Be 8 Characters At Least"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "pleaseConfirmNewPassword":
+            MessageLookupByLibrary.simpleMessage("Please Confirm New Password"),
         "pleaseConfirmPassword":
             MessageLookupByLibrary.simpleMessage("Please Confirm Password"),
         "pleaseEnterEmail":
             MessageLookupByLibrary.simpleMessage("Please Enter Email"),
+        "pleaseEnterNewPassword":
+            MessageLookupByLibrary.simpleMessage("Please Enter New Password"),
         "pleaseEnterOldPassword":
             MessageLookupByLibrary.simpleMessage("Please Enter Old Password"),
         "pleaseEnterPassword":
@@ -61,9 +77,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "pleaseEnterYourName":
             MessageLookupByLibrary.simpleMessage("Please Enter Your Name"),
         "register": MessageLookupByLibrary.simpleMessage("Register"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
         "things": MessageLookupByLibrary.simpleMessage("Things"),
         "tod": MessageLookupByLibrary.simpleMessage("Tod"),
+        "updateInformation":
+            MessageLookupByLibrary.simpleMessage("Update Information"),
         "welcomeToTheApp":
             MessageLookupByLibrary.simpleMessage("Welcome to the app")
       };

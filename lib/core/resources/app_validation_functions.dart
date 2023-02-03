@@ -3,37 +3,20 @@ import 'package:get/get.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class AppValidation {
-  // static String? validateOldPassword(String? value,BuildContext context) {
-  //   if (value == null || value.isEmpty) {
-  //     return AppLocalizations.of(context).pleaseEnterOldPassword;
-  //   } else if (value.length < 8) {
-  //     return AppLocalizations.of(context).passwordMustBe8CharactersAtLeast;
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
-  static String? validateConfirmPassword(
-      String? passwordConfirmation, String? newPassword, BuildContext context,) {
+  static String? validatePasswordConfirmation(
+    String? passwordConfirmation,
+    String? password,
+    BuildContext context,
+  ) {
     if (passwordConfirmation == null || passwordConfirmation.isEmpty) {
       return AppLocalizations.of(context).pleaseConfirmPassword;
-    } else if (passwordConfirmation != newPassword) {
+    } else if (passwordConfirmation != password) {
       return AppLocalizations.of(context)
           .passwordAndConfirmPasswordFieldsDontMatch;
     } else {
       return null;
     }
   }
-
-  // static String? validateNewPassword(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return AppStrings.plzEnterNewPassword.tr();
-  //   } else if (value.length < 8) {
-  //     return AppStrings.passMustBeGreaterThan7.tr();
-  //   } else {
-  //     return null;
-  //   }
-  // }
 
   static String? validatePhoneNumber(String? value, BuildContext context) {
     if (value == null || value.isEmpty) {
@@ -50,6 +33,41 @@ class AppValidation {
       return AppLocalizations.of(context).pleaseEnterPassword;
     } else if (value.length < 8) {
       return AppLocalizations.of(context).passwordMustBe8CharactersAtLeast;
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateOldPassword(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return 'Please Enter Old Password';
+    } else if (value.length < 8) {
+      return AppLocalizations.of(context).passwordMustBe8CharactersAtLeast;
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateNewPassword(String? value, BuildContext context) {
+    if (value == null || value.isEmpty) {
+      return AppLocalizations.of(context).pleaseEnterNewPassword;
+    } else if (value.length < 8) {
+      return AppLocalizations.of(context).passwordMustBe8CharactersAtLeast;
+    } else {
+      return null;
+    }
+  }
+
+  static String? validateNewPasswordConfirmation(
+    String? passwordConfirmation,
+    String? password,
+    BuildContext context,
+  ) {
+    if (passwordConfirmation == null || passwordConfirmation.isEmpty) {
+      return AppLocalizations.of(context).pleaseConfirmNewPassword;
+    } else if (passwordConfirmation != password) {
+      return AppLocalizations.of(context)
+          .passwordAndConfirmPasswordFieldsDontMatch;
     } else {
       return null;
     }

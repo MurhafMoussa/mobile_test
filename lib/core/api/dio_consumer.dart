@@ -11,7 +11,6 @@ import 'package:things_todo/injection.dart';
 
 @Singleton(as: ApiConsumer)
 class DioConsumer implements ApiConsumer {
-
   DioConsumer({required this.client}) {
     client.options
       ..sendTimeout = 10 * 100000
@@ -27,16 +26,23 @@ class DioConsumer implements ApiConsumer {
   final Dio client;
   late Map<String, String> _headers;
 
-  void setHeaders() {
+  void setHeaders({
+    String? token,
+  }) {
     _headers = {
       StringsManager.accept: StringsManager.applicationJson,
       StringsManager.contentType: StringsManager.applicationJson,
+      StringsManager.authorization:
+          token != null ? StringsManager.bearer + token : '',
     };
   }
 
   @override
-  Future get(String path,
-      {Map<String, dynamic>? queryParameters, CancelToken? cancelToken,}) async {
+  Future get(
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+  }) async {
     setHeaders();
 
     try {
@@ -55,20 +61,25 @@ class DioConsumer implements ApiConsumer {
   }
 
   @override
-  Future post(String path,
-      {Map<String, dynamic>? body,
-      FormData? formData,
-      Map<String, dynamic>? queryParameters,}) async {
-    setHeaders();
+  Future post(
+    String path, {
+    Map<String, dynamic>? body,
+    String? token,
+    FormData? formData,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    setHeaders(token: token);
 
     try {
-      final Response response = await client.post(path,
-          queryParameters: queryParameters,
-          options: Options(
-              headers: _headers,
-              contentType:
-                  formData == null ? StringsManager.jsonContentType : null,),
-          data: formData ?? body,);
+      final Response response = await client.post(
+        path,
+        queryParameters: queryParameters,
+        options: Options(
+          headers: _headers,
+          contentType: formData == null ? StringsManager.jsonContentType : null,
+        ),
+        data: formData ?? body,
+      );
       return _handleOnlineResponseAsJson(response);
     } catch (error) {
       rethrow;
@@ -76,9 +87,11 @@ class DioConsumer implements ApiConsumer {
   }
 
   @override
-  Future put(String path,
-      {Map<String, dynamic>? body,
-      Map<String, dynamic>? queryParameters,}) async {
+  Future put(
+    String path, {
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+  }) async {
     setHeaders();
     try {
       final Response response = await client.put(
@@ -86,7 +99,9 @@ class DioConsumer implements ApiConsumer {
         queryParameters: queryParameters,
         data: body,
         options: Options(
-            headers: _headers, contentType: StringsManager.jsonContentType,),
+          headers: _headers,
+          contentType: StringsManager.jsonContentType,
+        ),
       );
       return _handleOnlineResponseAsJson(response);
     } catch (error) {

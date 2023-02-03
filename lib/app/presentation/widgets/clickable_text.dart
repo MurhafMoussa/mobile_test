@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:things_todo/core/resources/color_manager.dart';
 import 'package:things_todo/core/resources/font_manager.dart';
-import 'package:things_todo/core/resources/text_style_manager.dart';
 
 class ClickableText extends StatelessWidget {
   const ClickableText({
@@ -17,7 +17,7 @@ class ClickableText extends StatelessWidget {
   Widget build(BuildContext context) => Text.rich(
         TextSpan(
           text: content,
-          style: getSubtitleTextStyle().copyWith(
+          style: context.textTheme.bodyMedium?.copyWith(
             color: ColorManager.gray,
           ),
           children: [
@@ -25,9 +25,8 @@ class ClickableText extends StatelessWidget {
               text: contentToBeClicked,
               recognizer: TapAndDragGestureRecognizer()
                 ..onTapDown = onTappingContent,
-              style: getSubtitleTextStyle().copyWith(
-                color: ColorManager.primary,
-                fontWeight: FontWeightManager.bold,
+              style: context.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.bold,
               ),
             )
           ],

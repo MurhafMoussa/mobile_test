@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:things_todo/app/data/models/user_model/user_model.dart';
+import 'package:things_todo/app/domain/bodies/change_password_body.dart';
 import 'package:things_todo/app/domain/bodies/login_body.dart';
 import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/core/api/api_consumer.dart';
@@ -10,6 +12,8 @@ import 'package:things_todo/core/api_global_responses/api_success_response.dart'
 abstract class UserRemoteDataSource {
   Future<ApiSuccessResponse<UserModel>> login(LoginBody body);
   Future<ApiSuccessResponse<UserModel>> register(RegisterBody body);
+  Future<ApiSuccessResponse<void>> changePassword(
+      ChangePasswordBody body, String token);
 }
 
 @Singleton(as: UserRemoteDataSource)
@@ -28,8 +32,8 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
           ),
         ),
       );
-@override
-  Future<ApiSuccessResponse<UserModel>> register(RegisterBody body)async =>
+  @override
+  Future<ApiSuccessResponse<UserModel>> register(RegisterBody body) async =>
       await _getResultsAndModelTheUser(
         () => _apiConsumer.post(
           EndPoints.register,
@@ -38,6 +42,19 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
           ),
         ),
       );
+  @override
+  Future<ApiSuccessResponse<void>> changePassword(
+          ChangePasswordBody body, String token) async =>
+      await _getResults(
+        () => _apiConsumer.post(
+          EndPoints.changePassword,
+          formData: FormData.fromMap(
+            body.toJson(),
+          ),
+          token: token,
+        ),
+      );
+
   Future<ApiSuccessResponse<UserModel>> _getResultsAndModelTheUser(
     Future Function() apiCall,
   ) async {
@@ -47,6 +64,14 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
       (json) => UserModel.fromJson(json),
     );
   }
-  
-  
+
+  Future<ApiSuccessResponse<void>> _getResults(
+    Future Function() apiCall,
+  ) async {
+    final response = await apiCall();
+    return ApiSuccessResponse.fromJson(
+      response,
+      (json) => Unit,
+    );
+  }
 }
