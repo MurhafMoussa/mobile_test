@@ -17,7 +17,7 @@ import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
-import 'package:things_todo/core/widgets/loading_widget.dart';
+import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 import '../widgets/clickable_text.dart';
@@ -71,8 +71,6 @@ class RegisterPage extends GetView<RegisterController> {
                         () => AppTextFormField(
                           hintText: AppLocalizations.of(context).password,
                           textEditingController: controller.passwordController,
-                                           
-
                           passwordVisibility:
                               controller.passwordVisibility.value,
                           textInputAction: TextInputAction.next,
@@ -118,7 +116,7 @@ class RegisterPage extends GetView<RegisterController> {
                         () => AppButton.filled(
                           onPressed: _register,
                           content: controller.isLoading.value
-                              ? const LoadingWidget()
+                              ?  AppLoadingWidget.light()
                               : Text(
                                   AppLocalizations.of(context).register,
                                 ),

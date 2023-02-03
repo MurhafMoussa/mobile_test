@@ -14,7 +14,7 @@ import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
-import 'package:things_todo/core/widgets/loading_widget.dart';
+import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -77,7 +77,7 @@ class LoginPage extends GetView<LoginController> {
                         () => AppButton.filled(
                           onPressed: _login,
                           content: controller.isLoading.value
-                              ? const LoadingWidget()
+                              ?  AppLoadingWidget.light()
                               : Text(
                                   AppLocalizations.of(context).login,
                                 ),

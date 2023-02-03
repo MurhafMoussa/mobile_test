@@ -7,12 +7,14 @@ import 'package:things_todo/app/presentation/bindings/change_password_binding.da
 import 'package:things_todo/app/presentation/bindings/home_binding.dart';
 import 'package:things_todo/app/presentation/bindings/login_binding.dart';
 import 'package:things_todo/app/presentation/bindings/register_binding.dart';
+import 'package:things_todo/app/presentation/bindings/splash_binding.dart';
 import 'package:things_todo/app/presentation/bindings/update_information_binding.dart';
 import 'package:things_todo/app/presentation/bindings/welcome_binding.dart';
 import 'package:things_todo/app/presentation/pages/change_password_page.dart';
 import 'package:things_todo/app/presentation/pages/home_page.dart';
 import 'package:things_todo/app/presentation/pages/login_page.dart';
 import 'package:things_todo/app/presentation/pages/register_page.dart';
+import 'package:things_todo/app/presentation/pages/splash_page.dart';
 import 'package:things_todo/app/presentation/pages/update_information_page.dart';
 import 'package:things_todo/app/presentation/pages/welcome_page.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
@@ -68,7 +70,7 @@ class MobileTest extends StatelessWidget {
         ),
         theme: getApplicationThemeData(isDark: false),
         navigatorKey: MobileTest.navigatorKey,
-        initialRoute: AppRoutes.welcomeRoute,
+        initialRoute: AppRoutes.splashRoute,
         getPages: [
           GetPage(
             name: AppRoutes.loginRoute,
@@ -95,10 +97,10 @@ class MobileTest extends StatelessWidget {
             page: () => const ChangePasswordPage(),
             binding: ChangePasswordBinding(),
           ),
-           GetPage(
-            name: AppRoutes.updateInformationRoute,
-            page: () => const UpdateInformationPage(),
-            binding: UpdateInformationBinding(),
+          GetPage(
+            name: AppRoutes.splashRoute,
+            page: () => const SplashPage(),
+            binding: SplashBinding(),
           ),
         ],
       );

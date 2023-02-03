@@ -17,11 +17,9 @@ abstract class UserRemoteDataSource {
   Future<ApiSuccessResponse<UserModel>> register(RegisterBody body);
   Future<ApiSuccessResponse<void>> changePassword(
     ChangePasswordBody body,
-    String token,
   );
   Future<ApiSuccessResponse<UserModel>> updateUser(
     UserModel body,
-    String token,
   );
 }
 
@@ -54,7 +52,6 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
   @override
   Future<ApiSuccessResponse<void>> changePassword(
     ChangePasswordBody body,
-    String token,
   ) async =>
       await _getResults(
         () => _apiConsumer.post(
@@ -62,13 +59,11 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
           formData: FormData.fromMap(
             body.toJson(),
           ),
-          token: token,
         ),
       );
   @override
   Future<ApiSuccessResponse<UserModel>> updateUser(
     UserModel body,
-    String? token,
   ) async {
     final userToBeUpdated = await checkForChangedFieldsInTheSavedUser(body);
     return await _getResultsAndModelTheUser(
@@ -77,7 +72,6 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
         formData: FormData.fromMap(
           userToBeUpdated!,
         ),
-        token: token,
       ),
     );
   }

@@ -16,22 +16,24 @@ import 'package:things_todo/app/data/datasources/user_local_data_source.dart'
 import 'package:things_todo/app/data/datasources/user_remote_data_source.dart'
     as _i11;
 import 'package:things_todo/app/data/repositories/user_repository_imp.dart'
-    as _i10;
+    as _i13;
 import 'package:things_todo/app/domain/repositories/user_repository.dart'
-    as _i9;
-import 'package:things_todo/app/domain/usecases/post_change_password_usecase.dart'
+    as _i12;
+import 'package:things_todo/app/domain/usecases/get_authorization_status_usecase.dart'
     as _i14;
-import 'package:things_todo/app/domain/usecases/post_login_usecase.dart'
+import 'package:things_todo/app/domain/usecases/post_change_password_usecase.dart'
     as _i15;
-import 'package:things_todo/app/domain/usecases/post_register_usecase.dart'
+import 'package:things_todo/app/domain/usecases/post_login_usecase.dart'
     as _i16;
-import 'package:things_todo/app/domain/usecases/post_update_information_usecase.dart'
+import 'package:things_todo/app/domain/usecases/post_register_usecase.dart'
     as _i17;
-import 'package:things_todo/core/api/api_consumer.dart' as _i12;
-import 'package:things_todo/core/api/dio_consumer.dart' as _i13;
+import 'package:things_todo/app/domain/usecases/post_update_information_usecase.dart'
+    as _i18;
+import 'package:things_todo/core/api/api_consumer.dart' as _i9;
+import 'package:things_todo/core/api/dio_consumer.dart' as _i10;
 import 'package:things_todo/core/api/logging_interceptor.dart' as _i5;
 import 'package:things_todo/core/network/netwok_info.dart' as _i6;
-import 'package:things_todo/core/third_party_injection.dart' as _i18;
+import 'package:things_todo/core/third_party_injection.dart' as _i19;
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -59,22 +61,29 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.singleton<_i8.UserLocalDataSource>(
         _i8.UserLocalDataSourceImp(gh<_i7.SharedPreferences>()));
-    gh.singleton<_i9.UserRepository>(_i10.UserRepositoryImp(
+    gh.singleton<_i9.ApiConsumer>(_i10.DioConsumer(
+      gh<_i3.Dio>(),
+      gh<_i8.UserLocalDataSource>(),
+    ));
+    gh.singleton<_i11.UserRemoteDataSource>(
+        _i11.UserRemoteDataSourceImp(gh<_i9.ApiConsumer>()));
+    gh.singleton<_i12.UserRepository>(_i13.UserRepositoryImp(
       gh<_i11.UserRemoteDataSource>(),
       gh<_i6.NetworkInfo>(),
       gh<_i8.UserLocalDataSource>(),
     ));
-    gh.singleton<_i12.ApiConsumer>(_i13.DioConsumer(client: gh<_i3.Dio>()));
-    gh.factory<_i14.PostChangePasswordUseCase>(
-        () => _i14.PostChangePasswordUseCase(gh<_i9.UserRepository>()));
-    gh.factory<_i15.PostLoginUseCase>(
-        () => _i15.PostLoginUseCase(gh<_i9.UserRepository>()));
-    gh.factory<_i16.PostRegisterUseCase>(
-        () => _i16.PostRegisterUseCase(gh<_i9.UserRepository>()));
-    gh.factory<_i17.PostUpdateInformationUseCase>(
-        () => _i17.PostUpdateInformationUseCase(gh<_i9.UserRepository>()));
+    gh.factory<_i14.GetAuthorizationStatusUseCase>(
+        () => _i14.GetAuthorizationStatusUseCase(gh<_i12.UserRepository>()));
+    gh.factory<_i15.PostChangePasswordUseCase>(
+        () => _i15.PostChangePasswordUseCase(gh<_i12.UserRepository>()));
+    gh.factory<_i16.PostLoginUseCase>(
+        () => _i16.PostLoginUseCase(gh<_i12.UserRepository>()));
+    gh.factory<_i17.PostRegisterUseCase>(
+        () => _i17.PostRegisterUseCase(gh<_i12.UserRepository>()));
+    gh.factory<_i18.PostUpdateInformationUseCase>(
+        () => _i18.PostUpdateInformationUseCase(gh<_i12.UserRepository>()));
     return this;
   }
 }
 
-class _$ThirdPartyInjection extends _i18.ThirdPartyInjection {}
+class _$ThirdPartyInjection extends _i19.ThirdPartyInjection {}

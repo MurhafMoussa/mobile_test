@@ -15,7 +15,7 @@ import 'package:things_todo/core/widgets/app_back_button.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
-import 'package:things_todo/core/widgets/loading_widget.dart';
+import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class UpdateInformationPage extends GetView<UpdateInformationController> {
@@ -55,7 +55,7 @@ class UpdateInformationPage extends GetView<UpdateInformationController> {
                     () => AppButton.filled(
                       onPressed: _updateUserInformation,
                       content: controller.isLoading.value
-                          ? const LoadingWidget()
+                          ? AppLoadingWidget.light()
                           : Text(
                               AppLocalizations.of(context).save,
                             ),

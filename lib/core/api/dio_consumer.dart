@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:things_todo/app/data/datasources/user_local_data_source.dart';
 import 'package:things_todo/core/api/api_consumer.dart';
 import 'package:things_todo/core/api/end_points.dart';
 import 'package:things_todo/core/api/logging_interceptor.dart';
@@ -11,8 +13,8 @@ import 'package:things_todo/injection.dart';
 
 @Singleton(as: ApiConsumer)
 class DioConsumer implements ApiConsumer {
-  DioConsumer({required this.client}) {
-    client.options
+  DioConsumer(this._client, this._userLocalDataSource) {
+    _client.options
       ..sendTimeout = 10 * 100000
       ..connectTimeout = 60 * 100000
       ..receiveTimeout = 30 * 100000
@@ -20,20 +22,21 @@ class DioConsumer implements ApiConsumer {
       ..responseType = ResponseType.plain
       ..followRedirects = true;
     if (kDebugMode) {
-      client.interceptors.add(getIt<LoggingInterceptor>());
+      _client.interceptors.add(getIt<LoggingInterceptor>());
     }
   }
-  final Dio client;
+  final Dio _client;
+  final UserLocalDataSource _userLocalDataSource;
   late Map<String, String> _headers;
 
-  void setHeaders({
-    String? token,
-  }) {
+  Future<void> setHeaders() async {
+    final user = await _userLocalDataSource.getUser();
+
     _headers = {
       StringsManager.accept: StringsManager.applicationJson,
       StringsManager.contentType: StringsManager.applicationJson,
       StringsManager.authorization:
-          token != null ? StringsManager.bearer + token : '',
+          user != null ? StringsManager.bearer + user.token! : '',
     };
   }
 
@@ -46,7 +49,7 @@ class DioConsumer implements ApiConsumer {
     setHeaders();
 
     try {
-      final Response response = await client.get(
+      final Response response = await _client.get(
         path,
         queryParameters: queryParameters,
         cancelToken: cancelToken,
@@ -68,10 +71,10 @@ class DioConsumer implements ApiConsumer {
     FormData? formData,
     Map<String, dynamic>? queryParameters,
   }) async {
-    setHeaders(token: token);
+    await setHeaders();
 
     try {
-      final Response response = await client.post(
+      final Response response = await _client.post(
         path,
         queryParameters: queryParameters,
         options: Options(
@@ -94,7 +97,7 @@ class DioConsumer implements ApiConsumer {
   }) async {
     setHeaders();
     try {
-      final Response response = await client.put(
+      final Response response = await _client.put(
         path,
         queryParameters: queryParameters,
         data: body,

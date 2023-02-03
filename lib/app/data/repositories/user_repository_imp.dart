@@ -23,8 +23,7 @@ class UserRepositoryImp implements UserRepository {
   final UserRemoteDataSource _userRemoteDataSource;
   final UserLocalDataSource _userLocalDataSource;
   final NetworkInfo _networkInfo;
-  String? _token = '';
-  String? _id = '';
+  UserModel? user;
   DateTime? _tokenExpiryDate;
   @override
   Future<Either<NetworkExceptions, String>> login(
@@ -45,13 +44,10 @@ class UserRepositoryImp implements UserRepository {
   Future<Either<NetworkExceptions, String>> changePassword(
     ChangePasswordBody changePasswordBody,
   ) async {
-    await _assignTokenValueAndExpiryDate();
-
-    if (_token != null && _tokenIsNotExpired()) {
+    if (await userIsAuthinticatedAndHasAuthorization()) {
       return await _getResults(
         () => _userRemoteDataSource.changePassword(
           changePasswordBody,
-          _token!,
         ),
       );
     } else {
@@ -60,15 +56,6 @@ class UserRepositoryImp implements UserRepository {
       await _userLocalDataSource.removeUser();
       return const Left(NetworkExceptions.unauthorizedRequest('Login First'));
     }
-  }
-
-  Future<void> _assignTokenValueAndExpiryDate() async {
-    await _getUser().then(
-      (user) {
-        _token = user?.token;
-        _tokenExpiryDate = _parseTokenExpiryDateStringToDateTime(user);
-      },
-    );
   }
 
   DateTime _parseTokenExpiryDateStringToDateTime(
@@ -92,8 +79,7 @@ class UserRepositoryImp implements UserRepository {
 
   @override
   Future<Either<NetworkExceptions, String>> updateUser(User user) async {
-    await _assignTokenValueAndExpiryDate();
-    if (_token != null && _tokenIsNotExpired()) {
+    if (await userIsAuthinticatedAndHasAuthorization()) {
       return await _makeTheUpdateUserApiCallAndUpdateTheCurrentUserInLocalStorage(
         user,
       );
@@ -118,7 +104,9 @@ class UserRepositoryImp implements UserRepository {
         );
         userModel = userModel.fromEntity(user);
         final ApiSuccessResponse<UserModel> response =
-            await _userRemoteDataSource.updateUser(userModel, _token!);
+            await _userRemoteDataSource.updateUser(
+          userModel,
+        );
         await _userLocalDataSource.updateUser(response.data);
         return Right(
           response.message,
@@ -132,6 +120,25 @@ class UserRepositoryImp implements UserRepository {
       return const Left(
         NetworkExceptions.noInternetConnection(),
       );
+    }
+  }
+
+  @override
+  Future<bool> userIsAuthinticatedAndHasAuthorization() async {
+    try {
+      await _getUser().then(
+        (user) {
+          this.user = user;
+          _tokenExpiryDate = _parseTokenExpiryDateStringToDateTime(user);
+        },
+      );
+      if (_tokenIsNotExpired() && user != null) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
     }
   }
 

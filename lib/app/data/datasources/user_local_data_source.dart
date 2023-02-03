@@ -10,6 +10,7 @@ abstract class UserLocalDataSource {
   Future<UserModel?> getUser();
   Future<void> removeUser();
   Future<void> updateUser(UserModel userModel);
+ 
 }
 
 @Singleton(as: UserLocalDataSource)
@@ -79,4 +80,6 @@ class UserLocalDataSourceImp implements UserLocalDataSource {
       rethrow;
     }
   }
+  
+ 
 }

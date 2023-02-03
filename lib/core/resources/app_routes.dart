@@ -6,4 +6,5 @@ class AppRoutes {
   static const String changePasswordRoute = '/change_password';
   static const String updateInformationRoute = '/update_information';
   static const String welcomeRoute = '/welcome';
+  static const String splashRoute = '/splash';
 }
