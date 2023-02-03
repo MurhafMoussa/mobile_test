@@ -1,19 +1,28 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
+import 'package:things_todo/app/data/datasources/user_local_data_source.dart';
 import 'package:things_todo/app/data/models/user_model/user_model.dart';
 import 'package:things_todo/app/domain/bodies/change_password_body.dart';
 import 'package:things_todo/app/domain/bodies/login_body.dart';
 import 'package:things_todo/app/domain/bodies/register_body.dart';
+import 'package:things_todo/app/domain/entities/user.dart';
 import 'package:things_todo/core/api/api_consumer.dart';
 import 'package:things_todo/core/api/end_points.dart';
 import 'package:things_todo/core/api_global_responses/api_success_response.dart';
+import 'package:things_todo/injection.dart';
 
 abstract class UserRemoteDataSource {
   Future<ApiSuccessResponse<UserModel>> login(LoginBody body);
   Future<ApiSuccessResponse<UserModel>> register(RegisterBody body);
   Future<ApiSuccessResponse<void>> changePassword(
-      ChangePasswordBody body, String token);
+    ChangePasswordBody body,
+    String token,
+  );
+  Future<ApiSuccessResponse<UserModel>> updateUser(
+    UserModel body,
+    String token,
+  );
 }
 
 @Singleton(as: UserRemoteDataSource)
@@ -44,7 +53,9 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
       );
   @override
   Future<ApiSuccessResponse<void>> changePassword(
-          ChangePasswordBody body, String token) async =>
+    ChangePasswordBody body,
+    String token,
+  ) async =>
       await _getResults(
         () => _apiConsumer.post(
           EndPoints.changePassword,
@@ -54,6 +65,52 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
           token: token,
         ),
       );
+  @override
+  Future<ApiSuccessResponse<UserModel>> updateUser(
+    UserModel body,
+    String? token,
+  ) async {
+    final userToBeUpdated = await checkForChangedFieldsInTheSavedUser(body);
+    return await _getResultsAndModelTheUser(
+      () => _apiConsumer.post(
+        EndPoints.updateUser,
+        formData: FormData.fromMap(
+          userToBeUpdated!,
+        ),
+        token: token,
+      ),
+    );
+  }
+
+  Future<Map<String, dynamic>?> checkForChangedFieldsInTheSavedUser(
+    UserModel body,
+  ) async {
+    final savedUser = await getIt<UserLocalDataSource>().getUser();
+    final userToBeUpdated = body.toJson();
+    final jsonSavedUser = savedUser?.toJson();
+    for (var element in userToBeUpdated.entries) {
+      if (enteredFieldExistsInLocalStorage(jsonSavedUser, element)) {
+        userToBeUpdated[element.key] = null;
+      }
+    }
+    removePhoneIfCountryCodeIsRedundant(userToBeUpdated);
+    return userToBeUpdated;
+  }
+
+  void removePhoneIfCountryCodeIsRedundant(
+    Map<String, dynamic> userToBeUpdated,
+  ) {
+    if (userToBeUpdated['country_code'] == null &&
+        userToBeUpdated['phone'] != null) {
+      userToBeUpdated.remove('phone');
+    }
+  }
+
+  bool enteredFieldExistsInLocalStorage(
+    Map<String, dynamic>? jsonSavedUser,
+    MapEntry<String, dynamic> element,
+  ) =>
+      jsonSavedUser != null && jsonSavedUser.containsValue(element.value);
 
   Future<ApiSuccessResponse<UserModel>> _getResultsAndModelTheUser(
     Future Function() apiCall,

@@ -43,7 +43,7 @@ SnackBar _customSnackBar(
             msg,
             style: GoogleFonts.alexandria(
               color: ColorManager.white,
-              fontWeight: FontWeight.w200,
+              fontWeight: FontWeight.w400,
               fontSize: FontSizesManager.s10,
             ),
           ),

@@ -14,7 +14,7 @@ abstract class UserRepository {
   Future<Either<NetworkExceptions, String>> register(
     RegisterBody registerBody,
   );
-  // Future<Either<Failure,ApiSuccessResponse<User>>> updateUser(User user);
+  Future<Either<NetworkExceptions,String>> updateUser(User user);
   Future<Either<NetworkExceptions, String>> changePassword(
     ChangePasswordBody changePasswordBody,
   );

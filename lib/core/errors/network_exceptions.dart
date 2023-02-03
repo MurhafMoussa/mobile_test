@@ -13,10 +13,11 @@ part 'network_exceptions.freezed.dart';
 abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
   const factory NetworkExceptions.requestCancelled() = RequestCancelled;
 
-  const factory NetworkExceptions.unauthorizedRequest(String reason) =
-      UnauthorizedRequest;
+  const factory NetworkExceptions.badRequest(String reason) =
+      BadRequest;
+  const factory NetworkExceptions.unauthorizedRequest(String reason) = UnauthorizedRequest;
+  const factory NetworkExceptions.forbidden() = Forbidden;
 
-  const factory NetworkExceptions.badRequest() = BadRequest;
 
   const factory NetworkExceptions.notFound(String reason) = NotFound;
 
@@ -57,9 +58,11 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
 
     switch (statusCode) {
       case 400:
+        return NetworkExceptions.badRequest('${errorModel.message}');
       case 401:
+        return  NetworkExceptions.unauthorizedRequest('${errorModel.message}');
       case 403:
-        return NetworkExceptions.unauthorizedRequest('${errorModel.message}');
+        return const NetworkExceptions.forbidden();
 
       case 404:
         return NetworkExceptions.notFound('${errorModel.message}');
@@ -153,8 +156,8 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       methodNotAllowed: () {
         errorMessage = 'Method Not Allowed';
       },
-      badRequest: () {
-        errorMessage = 'Bad request';
+      badRequest: (String message) {
+        errorMessage = message;
       },
       unauthorizedRequest: (String error) {
         errorMessage = error;
@@ -189,6 +192,10 @@ abstract class NetworkExceptions with _$NetworkExceptions implements Exception {
       notAcceptable: () {
         errorMessage = 'Not acceptable';
       },
+      forbidden: () {
+        errorMessage = 'Forbidden';
+      },
+      
     );
     return errorMessage;
   }

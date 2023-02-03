@@ -6,18 +6,27 @@ part 'user_model.g.dart';
 
 @freezed
 class UserModel extends User with _$UserModel {
+  
   factory UserModel({
-   required String id,
-  required  String name,
+    String? id,
+   required String name,
   required  String countryCode,
-   required String phone,
+  required  String phone,
   required  String email,
-  required  String token,
-  required   String tokenExpiry,
+    String? token,
+    String? tokenExpiry,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
+
 }
 
-
+extension ToUserModelFromEntity on User {
+  UserModel fromEntity(User user) => UserModel(
+        name: user.name,
+        countryCode: user.countryCode,
+        phone: user.phone,
+        email: user.email,
+      );
+}

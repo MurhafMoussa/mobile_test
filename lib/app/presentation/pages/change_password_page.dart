@@ -23,85 +23,91 @@ class ChangePasswordPage extends GetView<ChangePasswordController> {
           ),
           leading: const AppBackButton(),
         ),
-        body: Form(
-          key: controller.changePasswordKey,
-          child: Padding(
-            padding: appHorizontalPadding,
-            child: Column(
-              children: [
-                Obx(
-                  () => AppTextFormField(
-                    hintText: AppLocalizations.of(context).oldPassword,
-                    textEditingController: controller.oldPasswordController,
-                    passwordVisibility: controller.oldPasswordVisibility.value,
-                    suffixIcon: PasswordIcon(
-                      changeVisibility: () =>
-                          controller.changeOldPasswordVisibility(),
-                      visible: controller.oldPasswordVisibility.value,
+        body: SingleChildScrollView(
+          child: Form(
+            key: controller.changePasswordKey,
+            child: Padding(
+              padding: appHorizontalPadding,
+              child: Column(
+                children: [
+                  Obx(
+                    () => AppTextFormField(
+                      hintText: AppLocalizations.of(context).oldPassword,
+                      textEditingController: controller.oldPasswordController,
+                      passwordVisibility:
+                          controller.oldPasswordVisibility.value,
+                      textInputAction: TextInputAction.next,
+                      suffixIcon: PasswordIcon(
+                        changeVisibility: () =>
+                            controller.changeOldPasswordVisibility(),
+                        visible: controller.oldPasswordVisibility.value,
+                      ),
+                      validator: (String? password) =>
+                          AppValidation.validateOldPassword(
+                        password,
+                        context,
+                      ),
                     ),
-                    validator: (String? password) =>
-                        AppValidation.validateOldPassword(
-                      password,
-                      context,
-                    ),
+                  ).paddingOnly(
+                    bottom: paddingBetweenTextFieldsValue,
+                    top: paddingBetweenTextFieldsValue,
                   ),
-                ).paddingOnly(
-                  bottom: paddingBetweenTextFieldsValue,
-                  top: paddingBetweenTextFieldsValue,
-                ),
-                Obx(
-                  () => AppTextFormField(
-                    hintText: AppLocalizations.of(context).newPassword,
-                    textEditingController: controller.newPasswordController,
-                    passwordVisibility: controller.newPasswordVisibility.value,
-                    suffixIcon: PasswordIcon(
-                      changeVisibility: () =>
-                          controller.changeNewPasswordVisibility(),
-                      visible: controller.newPasswordVisibility.value,
+                  Obx(
+                    () => AppTextFormField(
+                      hintText: AppLocalizations.of(context).newPassword,
+                      textEditingController: controller.newPasswordController,
+                      passwordVisibility:
+                          controller.newPasswordVisibility.value,
+                      textInputAction: TextInputAction.next,
+                      suffixIcon: PasswordIcon(
+                        changeVisibility: () =>
+                            controller.changeNewPasswordVisibility(),
+                        visible: controller.newPasswordVisibility.value,
+                      ),
+                      validator: (String? password) =>
+                          AppValidation.validateNewPassword(
+                        password,
+                        context,
+                      ),
                     ),
-                    validator: (String? password) =>
-                        AppValidation.validateNewPassword(
-                      password,
-                      context,
-                    ),
+                  ).paddingOnly(
+                    bottom: paddingBetweenTextFieldsValue,
                   ),
-                ).paddingOnly(
-                  bottom: paddingBetweenTextFieldsValue,
-                ),
-                Obx(
-                  () => AppTextFormField(
-                    hintText: AppLocalizations.of(context).confirmNewPassword,
-                    textEditingController:
-                        controller.newPasswordConfirmationController,
-                    passwordVisibility:
-                        controller.newPasswordConfirmationVisibility.value,
-                    suffixIcon: PasswordIcon(
-                      changeVisibility: () =>
-                          controller.changeNewPasswordConfirmationVisibility(),
-                      visible:
+                  Obx(
+                    () => AppTextFormField(
+                      hintText: AppLocalizations.of(context).confirmNewPassword,
+                      textEditingController:
+                          controller.newPasswordConfirmationController,
+                      passwordVisibility:
                           controller.newPasswordConfirmationVisibility.value,
+                      suffixIcon: PasswordIcon(
+                        changeVisibility: () => controller
+                            .changeNewPasswordConfirmationVisibility(),
+                        visible:
+                            controller.newPasswordConfirmationVisibility.value,
+                      ),
+                      validator: (String? password) =>
+                          AppValidation.validateNewPasswordConfirmation(
+                        password,
+                        controller.newPasswordController.text,
+                        context,
+                      ),
                     ),
-                    validator: (String? password) =>
-                        AppValidation.validateNewPasswordConfirmation(
-                      password,
-                      controller.newPasswordController.text,
-                      context,
+                  ).paddingOnly(
+                    bottom: paddingBetweenTextFieldsValue,
+                  ),
+                  Obx(
+                    () => AppButton.filled(
+                      onPressed: _changePassword,
+                      content: controller.isLoading.value
+                          ? const LoadingWidget()
+                          : Text(
+                              AppLocalizations.of(context).save,
+                            ),
                     ),
                   ),
-                ).paddingOnly(
-                  bottom: paddingBetweenTextFieldsValue,
-                ),
-                Obx(
-                  () => AppButton.filled(
-                    onPressed: _changePassword,
-                    content: controller.isLoading.value
-                        ? const LoadingWidget()
-                        : Text(
-                            AppLocalizations.of(context).save,
-                          ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

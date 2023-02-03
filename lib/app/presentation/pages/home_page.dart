@@ -33,7 +33,9 @@ class HomePage extends GetView<HomeController> {
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).updateInformation,
-              onTap: () {},
+              onTap: () async => await Get.toNamed(
+                AppRoutes.updateInformationRoute,
+              ),
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).changePassword,

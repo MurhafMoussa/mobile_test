@@ -20,13 +20,13 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserModel {
-  String get id => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get token => throw _privateConstructorUsedError;
-  String get tokenExpiry => throw _privateConstructorUsedError;
+  String? get token => throw _privateConstructorUsedError;
+  String? get tokenExpiry => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,13 +40,13 @@ abstract class $UserModelCopyWith<$Res> {
       _$UserModelCopyWithImpl<$Res, UserModel>;
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String name,
       String countryCode,
       String phone,
       String email,
-      String token,
-      String tokenExpiry});
+      String? token,
+      String? tokenExpiry});
 }
 
 /// @nodoc
@@ -62,19 +62,19 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? countryCode = null,
     Object? phone = null,
     Object? email = null,
-    Object? token = null,
-    Object? tokenExpiry = null,
+    Object? token = freezed,
+    Object? tokenExpiry = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -91,14 +91,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      token: null == token
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenExpiry: null == tokenExpiry
+              as String?,
+      tokenExpiry: freezed == tokenExpiry
           ? _value.tokenExpiry
           : tokenExpiry // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -111,13 +111,13 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String id,
+      {String? id,
       String name,
       String countryCode,
       String phone,
       String email,
-      String token,
-      String tokenExpiry});
+      String? token,
+      String? tokenExpiry});
 }
 
 /// @nodoc
@@ -131,19 +131,19 @@ class __$$_UserModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
+    Object? id = freezed,
     Object? name = null,
     Object? countryCode = null,
     Object? phone = null,
     Object? email = null,
-    Object? token = null,
-    Object? tokenExpiry = null,
+    Object? token = freezed,
+    Object? tokenExpiry = freezed,
   }) {
     return _then(_$_UserModel(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -160,14 +160,14 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      token: null == token
+      token: freezed == token
           ? _value.token
           : token // ignore: cast_nullable_to_non_nullable
-              as String,
-      tokenExpiry: null == tokenExpiry
+              as String?,
+      tokenExpiry: freezed == tokenExpiry
           ? _value.tokenExpiry
           : tokenExpiry // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -176,19 +176,19 @@ class __$$_UserModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_UserModel implements _UserModel {
   _$_UserModel(
-      {required this.id,
+      {this.id,
       required this.name,
       required this.countryCode,
       required this.phone,
       required this.email,
-      required this.token,
-      required this.tokenExpiry});
+      this.token,
+      this.tokenExpiry});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
 
   @override
-  final String id;
+  final String? id;
   @override
   final String name;
   @override
@@ -198,9 +198,9 @@ class _$_UserModel implements _UserModel {
   @override
   final String email;
   @override
-  final String token;
+  final String? token;
   @override
-  final String tokenExpiry;
+  final String? tokenExpiry;
 
   @override
   bool operator ==(dynamic other) {
@@ -239,19 +239,19 @@ class _$_UserModel implements _UserModel {
 
 abstract class _UserModel implements UserModel {
   factory _UserModel(
-      {required final String id,
+      {final String? id,
       required final String name,
       required final String countryCode,
       required final String phone,
       required final String email,
-      required final String token,
-      required final String tokenExpiry}) = _$_UserModel;
+      final String? token,
+      final String? tokenExpiry}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
 
   @override
-  String get id;
+  String? get id;
   @override
   String get name;
   @override
@@ -261,9 +261,9 @@ abstract class _UserModel implements UserModel {
   @override
   String get email;
   @override
-  String get token;
+  String? get token;
   @override
-  String get tokenExpiry;
+  String? get tokenExpiry;
   @override
   @JsonKey(ignore: true)
   _$$_UserModelCopyWith<_$_UserModel> get copyWith =>

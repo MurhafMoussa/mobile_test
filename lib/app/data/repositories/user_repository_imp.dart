@@ -23,9 +23,9 @@ class UserRepositoryImp implements UserRepository {
   final UserRemoteDataSource _userRemoteDataSource;
   final UserLocalDataSource _userLocalDataSource;
   final NetworkInfo _networkInfo;
-  String? token = '';
-  String? id = '';
-  DateTime? tokenExpiryDate;
+  String? _token = '';
+  String? _id = '';
+  DateTime? _tokenExpiryDate;
   @override
   Future<Either<NetworkExceptions, String>> login(
     LoginBody body,
@@ -45,13 +45,13 @@ class UserRepositoryImp implements UserRepository {
   Future<Either<NetworkExceptions, String>> changePassword(
     ChangePasswordBody changePasswordBody,
   ) async {
-    await assignTokenValueAndExpiryDate();
+    await _assignTokenValueAndExpiryDate();
 
-    if (token != null && tokenIsNotExpired()) {
+    if (_token != null && _tokenIsNotExpired()) {
       return await _getResults(
         () => _userRemoteDataSource.changePassword(
           changePasswordBody,
-          token!,
+          _token!,
         ),
       );
     } else {
@@ -62,31 +62,76 @@ class UserRepositoryImp implements UserRepository {
     }
   }
 
-  Future<void> assignTokenValueAndExpiryDate() async {
+  Future<void> _assignTokenValueAndExpiryDate() async {
     await _getUser().then(
       (user) {
-        token = user?.token;
-        tokenExpiryDate = parseDateStringToDateTime(user);
+        _token = user?.token;
+        _tokenExpiryDate = _parseTokenExpiryDateStringToDateTime(user);
       },
     );
   }
 
-  DateTime parseDateStringToDateTime(
+  DateTime _parseTokenExpiryDateStringToDateTime(
     UserModel? user,
   ) =>
       DateFormat(
         'yyyy-MM-dd',
       ).parse(
-        user != null ? user.tokenExpiry : '',
+        user != null ? user.tokenExpiry! : '',
       );
 
-  bool tokenIsNotExpired() => DateTime.now().isBefore(tokenExpiryDate!);
+  bool _tokenIsNotExpired() => DateTime.now().isBefore(_tokenExpiryDate!);
 
   Future<UserModel?> _getUser() async {
     try {
       return _userLocalDataSource.getUser();
     } catch (e) {
       throw const NetworkExceptions.unableToProcess();
+    }
+  }
+
+  @override
+  Future<Either<NetworkExceptions, String>> updateUser(User user) async {
+    await _assignTokenValueAndExpiryDate();
+    if (_token != null && _tokenIsNotExpired()) {
+      return await _makeTheUpdateUserApiCallAndUpdateTheCurrentUserInLocalStorage(
+        user,
+      );
+    } else {
+      // the same action as the updatePassword
+      await _userLocalDataSource.removeUser();
+      return const Left(NetworkExceptions.unauthorizedRequest('Login First'));
+    }
+  }
+
+  Future<Either<NetworkExceptions, String>>
+      _makeTheUpdateUserApiCallAndUpdateTheCurrentUserInLocalStorage(
+    User user,
+  ) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        UserModel userModel = UserModel(
+          name: '',
+          countryCode: '',
+          phone: '',
+          email: '',
+        );
+        userModel = userModel.fromEntity(user);
+        final ApiSuccessResponse<UserModel> response =
+            await _userRemoteDataSource.updateUser(userModel, _token!);
+        await _userLocalDataSource.updateUser(response.data);
+        return Right(
+          response.message,
+        );
+      } catch (exception) {
+        return Left(
+          NetworkExceptions.getException(exception),
+        );
+      }
+    } else {
+      return const Left(
+        NetworkExceptions.noInternetConnection(),
+      );
     }
   }
 

@@ -12,6 +12,7 @@ import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/app_validation_functions.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
 import 'package:things_todo/core/resources/custom_page_title.dart';
+import 'package:things_todo/core/resources/strings_manager.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
@@ -70,6 +71,8 @@ class RegisterPage extends GetView<RegisterController> {
                         () => AppTextFormField(
                           hintText: AppLocalizations.of(context).password,
                           textEditingController: controller.passwordController,
+                                           
+
                           passwordVisibility:
                               controller.passwordVisibility.value,
                           textInputAction: TextInputAction.next,
@@ -147,7 +150,7 @@ class RegisterPage extends GetView<RegisterController> {
           passwordConfirmation: controller.passwordConfirmationController.text,
           name: controller.nameController.text,
           countryCode: controller.countryCodeController.text.isEmpty
-              ? '+971'
+              ? StringsManager.defaultCountryCode
               : controller.countryCodeController.text,
           phone: controller.phoneController.text,
         ),

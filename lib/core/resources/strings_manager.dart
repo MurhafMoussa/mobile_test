@@ -8,5 +8,5 @@ class StringsManager {
   static const String bearer = 'Bearer ';
   static const String contentType = 'Content-Type';
   static const String jsonContentType = 'application/json; charset=utf-8';
-  static const String lang = 'language';
+  static const String defaultCountryCode = '+971';
 }
