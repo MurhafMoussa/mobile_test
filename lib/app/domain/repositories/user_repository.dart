@@ -19,5 +19,5 @@ abstract class UserRepository {
   Future<Either<NetworkExceptions, String>> changePassword(
     ChangePasswordBody changePasswordBody,
   );
-  // Future<Either<Failure, ApiSuccessResponse<Unit>>> deleteUser();
+  Future<Either<NetworkExceptions, String>> deleteUser();
 }

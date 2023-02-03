@@ -37,5 +37,8 @@
   "pleaseConfirmNewPassword": "Please Confirm New Password",
   "newPasswordAndNewPasswordConfirmationFieldsDontMatch": "New Password and New Password Confirmation Fields Don't Match",
   "confirmNewPassword": "Confirm New Password",
-  "loginFirst": "Login First"
+  "loginFirst": "Login First",
+  "warning": "Warning !",
+  "areYouSureThatYouWantToDeleteYourAccount": "Are you sure that you want to delete your account ?",
+  "yes": "Yes"
 }

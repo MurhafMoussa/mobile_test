@@ -113,8 +113,21 @@ class DioConsumer implements ApiConsumer {
   }
 
   @override
-  Future delete(String path) {
-    throw UnimplementedError();
+  Future delete(String path) async {
+    await setHeaders();
+
+    try {
+      final Response response = await _client.delete(
+        path,
+        options: Options(
+          headers: _headers,
+          contentType: StringsManager.jsonContentType,
+        ),
+      );
+      return _handleOnlineResponseAsJson(response);
+    } catch (error) {
+      rethrow;
+    }
   }
 
   dynamic _handleOnlineResponseAsJson(Response response) {

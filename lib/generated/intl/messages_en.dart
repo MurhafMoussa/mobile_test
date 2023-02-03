@@ -25,6 +25,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
         "appTitle": MessageLookupByLibrary.simpleMessage("Things ToDo"),
+        "areYouSureThatYouWantToDeleteYourAccount":
+            MessageLookupByLibrary.simpleMessage(
+                "Are you sure that you want to delete your account ?"),
         "changePassword":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "confirmNewPassword":
@@ -83,7 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "tod": MessageLookupByLibrary.simpleMessage("Tod"),
         "updateInformation":
             MessageLookupByLibrary.simpleMessage("Update Information"),
+        "warning": MessageLookupByLibrary.simpleMessage("Warning !"),
         "welcomeToTheApp":
-            MessageLookupByLibrary.simpleMessage("Welcome to the app")
+            MessageLookupByLibrary.simpleMessage("Welcome to the app"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

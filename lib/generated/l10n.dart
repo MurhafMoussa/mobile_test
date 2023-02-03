@@ -439,6 +439,36 @@ class AppLocalizations {
       args: [],
     );
   }
+
+  /// `Warning !`
+  String get warning {
+    return Intl.message(
+      'Warning !',
+      name: 'warning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure that you want to delete your account ?`
+  String get areYouSureThatYouWantToDeleteYourAccount {
+    return Intl.message(
+      'Are you sure that you want to delete your account ?',
+      name: 'areYouSureThatYouWantToDeleteYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<AppLocalizations> {

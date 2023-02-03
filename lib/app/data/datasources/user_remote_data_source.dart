@@ -21,6 +21,7 @@ abstract class UserRemoteDataSource {
   Future<ApiSuccessResponse<UserModel>> updateUser(
     UserModel body,
   );
+  Future<ApiSuccessResponse<void>> deleteAccount();
 }
 
 @Singleton(as: UserRemoteDataSource)
@@ -59,6 +60,12 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
           formData: FormData.fromMap(
             body.toJson(),
           ),
+        ),
+      );
+  @override
+  Future<ApiSuccessResponse<void>> deleteAccount() async => await _getResults(
+        () => _apiConsumer.delete(
+          EndPoints.deleteAccount,
         ),
       );
   @override

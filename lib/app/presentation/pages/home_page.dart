@@ -5,6 +5,9 @@ import 'package:things_todo/app/presentation/widgets/home_list_tile.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/resources/color_manager.dart';
 import 'package:things_todo/core/resources/font_manager.dart';
+import 'package:things_todo/core/widgets/app_loading_dialog.dart';
+import 'package:things_todo/core/widgets/app_loading_widget.dart';
+import 'package:things_todo/core/widgets/app_options_dialog.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/generated/l10n.dart';
 
@@ -45,7 +48,18 @@ class HomePage extends GetView<HomeController> {
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).deleteAccount,
-              onTap: () {},
+              onTap: () async {
+                await showWarningDialog(
+                  context: context,
+                  action: () {
+                    Get.back();
+                    controller.deleteUser();
+                    showAppLoadingDialog(context);
+                  },
+                  content: AppLocalizations.of(context)
+                      .areYouSureThatYouWantToDeleteYourAccount,
+                );
+              },
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).logout,

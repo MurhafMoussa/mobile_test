@@ -58,6 +58,21 @@ class UserRepositoryImp implements UserRepository {
     }
   }
 
+  @override
+  Future<Either<NetworkExceptions, String>> deleteUser() async {
+    if (await userIsAuthinticatedAndHasAuthorization()) {
+      final response = await _getResults(
+        () => _userRemoteDataSource.deleteAccount(),
+      );
+      await _userLocalDataSource.removeUser();
+      return response;
+    } else {
+      //the same as update user
+      await _userLocalDataSource.removeUser();
+      return const Left(NetworkExceptions.unauthorizedRequest('Login First'));
+    }
+  }
+
   DateTime _parseTokenExpiryDateStringToDateTime(
     UserModel? user,
   ) =>

@@ -4,8 +4,11 @@ import 'package:things_todo/app/presentation/controllers/welcome_controller.dart
 class WelcomeBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<WelcomeController>(
-      () => WelcomeController(),
-    );
+    Get
+      .lazyPut<WelcomeController>(
+        () => WelcomeController(
+         
+        ),
+      );
   }
 }

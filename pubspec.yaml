@@ -41,13 +41,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/images/
-  fonts:
-    - family: Alexandria
-      fonts:
-        - asset: assets/fonts/AlexandriaFLF.ttf
-        - asset: assets/fonts/AlexandriaFLF-Italic.ttf
-          style: italic
-        - asset: assets/fonts/AlexandriaFLF-Bold.ttf
+  
 
   uses-material-design: true
 flutter_intl:

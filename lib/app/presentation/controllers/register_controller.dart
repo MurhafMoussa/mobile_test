@@ -6,7 +6,7 @@ import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/app/domain/usecases/post_register_usecase.dart';
 import 'package:things_todo/core/errors/network_exceptions.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
-import 'package:things_todo/core/resources/display_data_widgets.dart';
+import 'package:things_todo/core/widgets/display_data_widgets.dart';
 import 'package:things_todo/main.dart';
 
 class RegisterController extends GetxController  {
