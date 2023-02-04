@@ -3,6 +3,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:things_todo/core/resources/app_routes.dart';
+import 'package:things_todo/core/resources/color_manager.dart';
 import 'package:things_todo/core/resources/route_manager.dart';
 import 'package:things_todo/core/resources/strings_manager.dart';
 import 'package:things_todo/core/resources/theme_manager.dart';
@@ -49,6 +50,7 @@ class MobileTest extends StatelessWidget {
             ResponsiveBreakpoint.resize(800, name: DESKTOP),
           ],
         ),
+        color: ColorManager.white,
         theme: getApplicationThemeData(isDark: false),
         navigatorKey: MobileTest.navigatorKey,
         initialRoute: AppRoutes.splashRoute,
