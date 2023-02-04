@@ -24,7 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "alreadyHaveAnAccount":
             MessageLookupByLibrary.simpleMessage("Already have an account? "),
-        "appTitle": MessageLookupByLibrary.simpleMessage("Things ToDo"),
+        "appTitle": MessageLookupByLibrary.simpleMessage("Mobile Test"),
         "areYouSureThatYouWantToDeleteYourAccount":
             MessageLookupByLibrary.simpleMessage(
                 "Are you sure that you want to delete your account ?"),
@@ -84,8 +84,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Register"),
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "success": MessageLookupByLibrary.simpleMessage("Success"),
-        "things": MessageLookupByLibrary.simpleMessage("Things"),
-        "tod": MessageLookupByLibrary.simpleMessage("Tod"),
         "updateInformation":
             MessageLookupByLibrary.simpleMessage("Update Information"),
         "warning": MessageLookupByLibrary.simpleMessage("Warning !"),

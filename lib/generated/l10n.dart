@@ -50,31 +50,11 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `Things ToDo`
+  /// `Mobile Test`
   String get appTitle {
     return Intl.message(
-      'Things ToDo',
+      'Mobile Test',
       name: 'appTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Things`
-  String get things {
-    return Intl.message(
-      'Things',
-      name: 'things',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Tod`
-  String get tod {
-    return Intl.message(
-      'Tod',
-      name: 'tod',
       desc: '',
       args: [],
     );

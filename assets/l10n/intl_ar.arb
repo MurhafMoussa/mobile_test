@@ -1,7 +1,5 @@
 {
-  "appTitle": "Things ToDo",
-  "things": "Things",
-  "tod": "Tod",
+  "appTitle": "Mobile Test",
   "passwordMustBe8CharactersAtLeast": "Password Must Be 8 Characters At Least",
   "pleaseEnterOldPassword": "Please Enter Old Password",
   "pleaseEnterPassword": "Please Enter Password",
