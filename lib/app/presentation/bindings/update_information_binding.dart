@@ -1,7 +1,5 @@
 import 'package:get/get.dart';
-import 'package:things_todo/app/domain/usecases/post_register_usecase.dart';
 import 'package:things_todo/app/domain/usecases/post_update_information_usecase.dart';
-import 'package:things_todo/app/presentation/controllers/register_controller.dart';
 import 'package:things_todo/app/presentation/controllers/update_information_controller.dart';
 import 'package:things_todo/injection.dart';
 

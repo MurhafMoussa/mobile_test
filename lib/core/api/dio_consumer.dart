@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:things_todo/app/data/datasources/user_local_data_source.dart';
 import 'package:things_todo/core/api/api_consumer.dart';
 import 'package:things_todo/core/api/end_points.dart';

@@ -3,7 +3,6 @@ import 'package:things_todo/app/domain/bodies/change_password_body.dart';
 import 'package:things_todo/app/domain/bodies/login_body.dart';
 import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/app/domain/entities/user.dart';
-import 'package:things_todo/core/api_global_responses/api_success_response.dart';
 import 'package:things_todo/core/errors/network_exceptions.dart';
 
 abstract class UserRepository {

@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:things_todo/app/domain/usecases/get_authorization_status_usecase.dart';
-import 'package:things_todo/app/presentation/controllers/register_controller.dart';
 import 'package:things_todo/app/presentation/controllers/splash_controller.dart';
 import 'package:things_todo/injection.dart';
 

@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:things_todo/app/domain/entities/user.dart';
 import 'package:things_todo/app/domain/usecases/get_authorization_status_usecase.dart';
 
 import 'package:things_todo/core/resources/app_routes.dart';

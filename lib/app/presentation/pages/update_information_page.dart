@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:things_todo/app/domain/bodies/change_password_body.dart';
 import 'package:things_todo/app/domain/entities/user.dart';
-import 'package:things_todo/app/presentation/controllers/change_password_controller.dart';
 import 'package:things_todo/app/presentation/controllers/update_information_controller.dart';
 import 'package:things_todo/app/presentation/widgets/email_form_field.dart';
 import 'package:things_todo/app/presentation/widgets/full_name_form_field.dart';
-import 'package:things_todo/app/presentation/widgets/password_icon.dart';
 import 'package:things_todo/app/presentation/widgets/phone_form_field.dart';
-import 'package:things_todo/core/resources/app_validation_functions.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
 import 'package:things_todo/core/resources/strings_manager.dart';
 import 'package:things_todo/core/widgets/app_back_button.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
-import 'package:things_todo/core/widgets/app_text_form_field.dart';
-import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/core/widgets/app_loading_widget.dart';
+import 'package:things_todo/core/widgets/constant_global_widgets.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class UpdateInformationPage extends GetView<UpdateInformationController> {

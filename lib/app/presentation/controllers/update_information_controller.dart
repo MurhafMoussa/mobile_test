@@ -1,10 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/app/domain/entities/user.dart';
-import 'package:things_todo/app/domain/usecases/post_register_usecase.dart';
 import 'package:things_todo/app/domain/usecases/post_update_information_usecase.dart';
 import 'package:things_todo/app/presentation/controllers/home_controller.dart';
 import 'package:things_todo/core/errors/network_exceptions.dart';

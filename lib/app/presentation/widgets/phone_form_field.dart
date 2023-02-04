@@ -1,7 +1,6 @@
 import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:things_todo/app/presentation/controllers/register_controller.dart';
 import 'package:things_todo/core/resources/app_validation_functions.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';

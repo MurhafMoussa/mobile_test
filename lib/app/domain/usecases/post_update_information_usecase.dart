@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:things_todo/app/domain/bodies/change_password_body.dart';
 import 'package:things_todo/app/domain/entities/user.dart';
 import 'package:things_todo/app/domain/repositories/user_repository.dart';
 import 'package:things_todo/core/errors/network_exceptions.dart';

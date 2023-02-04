@@ -11,10 +11,10 @@ import 'package:things_todo/core/resources/app_validation_functions.dart';
 import 'package:things_todo/core/resources/constant_values.dart';
 import 'package:things_todo/core/resources/custom_page_title.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
+import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
-import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class LoginPage extends GetView<LoginController> {

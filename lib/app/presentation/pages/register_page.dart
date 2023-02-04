@@ -1,9 +1,9 @@
-import 'package:fl_country_code_picker/fl_country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:things_todo/app/domain/bodies/register_body.dart';
 import 'package:things_todo/app/presentation/controllers/register_controller.dart';
+import 'package:things_todo/app/presentation/widgets/clickable_text.dart';
 import 'package:things_todo/app/presentation/widgets/email_form_field.dart';
 import 'package:things_todo/app/presentation/widgets/full_name_form_field.dart';
 import 'package:things_todo/app/presentation/widgets/password_icon.dart';
@@ -14,13 +14,11 @@ import 'package:things_todo/core/resources/constant_values.dart';
 import 'package:things_todo/core/resources/custom_page_title.dart';
 import 'package:things_todo/core/resources/strings_manager.dart';
 import 'package:things_todo/core/widgets/app_button.dart';
+import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/core/widgets/app_logo.dart';
 import 'package:things_todo/core/widgets/app_text_form_field.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
-import 'package:things_todo/core/widgets/app_loading_widget.dart';
 import 'package:things_todo/generated/l10n.dart';
-
-import '../widgets/clickable_text.dart';
 
 class RegisterPage extends GetView<RegisterController> {
   const RegisterPage({super.key});

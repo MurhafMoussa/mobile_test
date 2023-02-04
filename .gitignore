@@ -6,6 +6,7 @@
 *.config.dart
 *.g.dart
 *.freezed.dart
+**/android/key.properties
 .DS_Store
 .atom/
 .buildlog/
