@@ -196,6 +196,31 @@ class UserRepositoryImp implements UserRepository {
     }
   }
 
+  @override
+  Future<Either<NetworkExceptions, User>> getUser() async {
+    try {
+      final userModel = await _getUser();
+      final User user = userModel != null
+          ? User(
+              name: userModel.name,
+              email: userModel.email,
+              phone: userModel.phone,
+              countryCode: userModel.countryCode,
+            )
+          : const User(
+              name: '',
+              email: '',
+              phone: '',
+              countryCode: '',
+            );
+      return Right(user);
+    } catch (e) {
+      return Left(
+        NetworkExceptions.getException(e),
+      );
+    }
+  }
+
   // Generic Functions to reduce boilerplate
   Future<Either<NetworkExceptions, String>> _getResultsAndSaveUser(
     Future<ApiSuccessResponse<UserModel>> Function() apiCall,

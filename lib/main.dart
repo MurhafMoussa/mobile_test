@@ -26,13 +26,9 @@ import 'package:things_todo/injection.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]).then(
-    (value) => runApp(
+ runApp(
       const MobileTest(),
-    ),
+   
   );
 }
 
@@ -96,6 +92,10 @@ class MobileTest extends StatelessWidget {
             name: AppRoutes.changePasswordRoute,
             page: () => const ChangePasswordPage(),
             binding: ChangePasswordBinding(),
+          ),GetPage(
+            name: AppRoutes.updateInformationRoute,
+            page: () => const UpdateInformationPage(),
+            binding: UpdateInformationBinding(),
           ),
           GetPage(
             name: AppRoutes.splashRoute,

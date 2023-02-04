@@ -22,17 +22,23 @@ class HomePage extends GetView<HomeController> {
         body: ListView(
           padding: appVerticalPadding.copyWith(top: 10),
           children: [
-            HomeListTile.userInfo(
-              icon: Icons.person_outline_rounded,
-              title: 'Morhaf',
+            Obx(
+              () => HomeListTile.userInfo(
+                icon: Icons.person_outline_rounded,
+                title: controller.getUserName(),
+              ),
             ),
-            HomeListTile.userInfo(
-              icon: Icons.phone_iphone,
-              title: 'Morhaf',
+            Obx(
+              () => HomeListTile.userInfo(
+                icon: Icons.phone_iphone,
+                title: controller.getPhoneNumber(),
+              ),
             ),
-            HomeListTile.userInfo(
-              icon: Icons.mail_outline,
-              title: 'Update Information',
+            Obx(
+              () => HomeListTile.userInfo(
+                icon: Icons.mail_outline,
+                title: controller.getEmail(),
+              ),
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).updateInformation,

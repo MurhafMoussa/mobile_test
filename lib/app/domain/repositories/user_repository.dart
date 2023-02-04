@@ -7,8 +7,8 @@ import 'package:things_todo/core/api_global_responses/api_success_response.dart'
 import 'package:things_todo/core/errors/network_exceptions.dart';
 
 abstract class UserRepository {
-  Future< bool>
-      userIsAuthinticatedAndHasAuthorization();
+  Future<bool> userIsAuthinticatedAndHasAuthorization();
+  Future<Either<NetworkExceptions, User>> getUser();
   Future<Either<NetworkExceptions, String>> login(
     LoginBody loginBody,
   );
