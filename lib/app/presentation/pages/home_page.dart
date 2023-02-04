@@ -6,6 +6,7 @@ import 'package:things_todo/core/resources/app_routes.dart';
 import 'package:things_todo/core/widgets/app_loading_dialog.dart';
 import 'package:things_todo/core/widgets/app_options_dialog.dart';
 import 'package:things_todo/core/widgets/constant_global_widgets.dart';
+import 'package:things_todo/core/widgets/loading_on_strings.dart';
 import 'package:things_todo/generated/l10n.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -20,22 +21,28 @@ class HomePage extends GetView<HomeController> {
           padding: appVerticalPadding.copyWith(top: 10),
           children: [
             Obx(
-              () => HomeListTile.userInfo(
-                icon: Icons.person_outline_rounded,
-                title: controller.getUserName(),
-              ),
+              () => controller.isLoading.value
+                  ? const LoadingOnStrings()
+                  : HomeListTile.userInfo(
+                      icon: Icons.person_outline_rounded,
+                      title: controller.getUserName(),
+                    ),
             ),
             Obx(
-              () => HomeListTile.userInfo(
-                icon: Icons.phone_iphone,
-                title: controller.getPhoneNumber(),
-              ),
+              () => controller.isLoading.value
+                  ? const LoadingOnStrings()
+                  : HomeListTile.userInfo(
+                      icon: Icons.phone_iphone,
+                      title: controller.getPhoneNumber(),
+                    ),
             ),
             Obx(
-              () => HomeListTile.userInfo(
-                icon: Icons.mail_outline,
-                title: controller.getEmail(),
-              ),
+              () => controller.isLoading.value
+                  ? const LoadingOnStrings()
+                  : HomeListTile.userInfo(
+                      icon: Icons.mail_outline,
+                      title: controller.getEmail(),
+                    ),
             ),
             HomeListTile.option(
               title: AppLocalizations.of(context).updateInformation,

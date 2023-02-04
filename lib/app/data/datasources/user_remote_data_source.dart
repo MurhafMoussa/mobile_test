@@ -88,22 +88,14 @@ class UserRemoteDataSourceImp implements UserRemoteDataSource {
     final savedUser = await getIt<UserLocalDataSource>().getUser();
     final userToBeUpdated = body.toJson();
     final jsonSavedUser = savedUser?.toJson();
+  
     for (var element in userToBeUpdated.entries) {
       if (enteredFieldExistsInLocalStorage(jsonSavedUser, element)) {
         userToBeUpdated[element.key] = null;
       }
     }
-    removePhoneIfCountryCodeIsRedundant(userToBeUpdated);
-    return userToBeUpdated;
-  }
 
-  void removePhoneIfCountryCodeIsRedundant(
-    Map<String, dynamic> userToBeUpdated,
-  ) {
-    if (userToBeUpdated['country_code'] == null &&
-        userToBeUpdated['phone'] != null) {
-      userToBeUpdated.remove('phone');
-    }
+    return userToBeUpdated;
   }
 
   bool enteredFieldExistsInLocalStorage(
